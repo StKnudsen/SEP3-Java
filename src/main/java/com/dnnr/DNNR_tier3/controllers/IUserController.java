@@ -7,6 +7,6 @@ import java.util.List;
 public interface IUserController
 {
     List<User> getAllUsers();
-    User getUserById(int userId);
+    User getUserByUsername(String username);
     void setUser(User newUser);
 }

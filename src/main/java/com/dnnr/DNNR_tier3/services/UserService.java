@@ -17,9 +17,9 @@ public class UserService implements IUserService
         return dao.getAllUsers();
     }
 
-    @Override public User getUserById(int userId)
+    @Override public User getUserByUsername(String username)
     {
-        return dao.getUserById(userId);
+        return dao.getUserByUsername(username);
     }
 
     @Override public void setUser(User user)

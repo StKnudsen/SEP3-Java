@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IDAO
 {
-     User getUserById(int userId);
+     User getUserByUsername(String username);
      User setUser(User user);
      List<User> getAllUsers();
 }
