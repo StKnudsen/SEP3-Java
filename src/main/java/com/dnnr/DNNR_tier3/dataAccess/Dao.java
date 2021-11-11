@@ -24,10 +24,10 @@ import java.sql.*;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM Users WHERE username = " + username);
+                    "SELECT * FROM Users WHERE username = '" + username + "'");
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
-            User user = new User(resultSet.getString("Username"),
+            User user = new User(resultSet.getInt("id"), resultSet.getString("Username"),
                     resultSet.getString("Password"));
             return user;
         }
