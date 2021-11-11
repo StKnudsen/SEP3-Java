@@ -105,3 +105,36 @@ CREATE TABLE IngredientPreference
     FOREIGN KEY (UserId) REFERENCES Users (id) ON DELETE CASCADE,
     FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE
 );
+
+CREATE TABLE FoodGroup
+(
+    id   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Name VARCHAR NOT NULL
+);
+
+CREATE TABLE FoodGroupIngredients
+(
+    FoodGroupId  INT,
+    IngredientId INT,
+    PRIMARY KEY (FoodGroupId, IngredientId),
+    FOREIGN KEY (FoodGroupId) REFERENCES FoodGroup (id),
+    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id)
+);
+
+CREATE TABLE FoodGroupAllergy
+(
+    UserId      INT,
+    FoodGroupId INT,
+    PRIMARY KEY (UserId, FoodGroupId),
+    FOREIGN KEY (UserId) REFERENCES Users (id),
+    FOREIGN KEY (FoodGroupId) REFERENCES FoodGroup (id)
+);
+
+CREATE TABLE FoodGroupPreference
+(
+    UserId      INT,
+    FoodGroupId INT,
+    PRIMARY KEY (UserId, FoodGroupId),
+    FOREIGN KEY (UserId) REFERENCES Users (id),
+    FOREIGN KEY (FoodGroupId) REFERENCES FoodGroup (id)
+);
