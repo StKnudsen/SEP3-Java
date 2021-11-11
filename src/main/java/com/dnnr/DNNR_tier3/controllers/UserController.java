@@ -15,10 +15,10 @@ public class UserController implements IUserController
 {
     @Resource IUserService userService;
 
-    @GetMapping(value = "/user") public List<User> getAllUsers()
+    /*@GetMapping(value = "/user") public List<User> getAllUsers()
     {
         return userService.getAllUsers();
-    }
+    }*/
 
     @GetMapping(value = "/user/{userName}") public User getUserByUsername(String username)
     {

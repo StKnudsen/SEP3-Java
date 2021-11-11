@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IUserService
 {
-    List<User> getAllUsers();
+   // List<User> getAllUsers();
     User getUserByUsername(String username);
     void setUser(User user);
 }
