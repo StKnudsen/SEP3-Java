@@ -20,9 +20,9 @@ public class UserController implements IUserController
         return userService.getAllUsers();
     }
 
-    @GetMapping(value = "/user/{userId}") public User getUserById(int userId)
+    @GetMapping(value = "/user/{userName}") public User getUserByUsername(String username)
     {
-        return userService.getUserById(userId);
+        return userService.getUserByUsername(username);
     }
 
     @PostMapping(value = "/user") public void setUser(@RequestBody User newUser)
