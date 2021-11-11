@@ -19,11 +19,11 @@ public class UserService implements IUserService
 
     @Override public User getUserById(int userId)
     {
-        return null;
+        return dao.getUserById(userId);
     }
 
     @Override public void setUser(User user)
     {
-
+    dao.setUser(user);
     }
 }
