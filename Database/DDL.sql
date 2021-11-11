@@ -81,8 +81,9 @@ CREATE TABLE DishIngredients
 CREATE TABLE Users
 (
     id       INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    UserName VARCHAR     NOT NULL,
+    Username VARCHAR     NOT NULL UNIQUE,
     Password VARCHAR(32) NOT NULL,
+    CONSTRAINT nameLength CHECK ( LENGTH(Username) > 2 ),
     CONSTRAINT pwLength CHECK ( LENGTH(Password) = 32 )
 );
 
