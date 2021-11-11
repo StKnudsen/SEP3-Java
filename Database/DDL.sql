@@ -14,7 +14,7 @@ CREATE TABLE Address
     StreetName  VARCHAR NOT NULL,
     HouseNumber INT     NOT NULL,
     PostalCode  INT,
-    FOREIGN KEY (PostalCode) REFERENCES City (postalCode)
+    FOREIGN KEY (PostalCode) REFERENCES City (postalCode) ON DELETE CASCADE
 );
 
 CREATE TABLE Restaurant
@@ -24,7 +24,7 @@ CREATE TABLE Restaurant
     Name      VARCHAR NOT NULL,
     Theme     VARCHAR,
     AddressId INT,
-    FOREIGN KEY (AddressId) REFERENCES Address (id)
+    FOREIGN KEY (AddressId) REFERENCES Address (id) ON DELETE SET NULL
 );
 
 CREATE TABLE FavoriteRestaurant
@@ -58,45 +58,50 @@ CREATE TABLE RecipeIngredients
     Amount       DECIMAL(6, 2),
     UnitId       INT,
     PRIMARY KEY (RecipeId, IngredientId),
-    FOREIGN KEY (RecipeId) REFERENCES Recipe (id),
-    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id),
-    FOREIGN KEY (UnitId) REFERENCES Unit (id)
+    FOREIGN KEY (RecipeId) REFERENCES Recipe (id) ON DELETE CASCADE,
+    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE,
+    FOREIGN KEY (UnitId) REFERENCES Unit (id) ON DELETE CASCADE
 );
 
-CREATE TABLE Dish(
+CREATE TABLE Dish
+(
     id   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Name VARCHAR NOT NULL
 );
 
-CREATE TABLE DishIngredients(
-    DishId int,
-    IngredientsId int,
+CREATE TABLE DishIngredients
+(
+    DishId        INT,
+    IngredientsId INT,
     PRIMARY KEY (DishId, IngredientsId),
-    FOREIGN KEY (DishId) REFERENCES Dish (id),
-    FOREIGN KEY (IngredientsId) REFERENCES Ingredient (id)
+    FOREIGN KEY (DishId) REFERENCES Dish (id) ON DELETE CASCADE,
+    FOREIGN KEY (IngredientsId) REFERENCES Ingredient (id) ON DELETE CASCADE
 );
 
-CREATE TABLE Users(
-    id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY ,
-    UserName varchar NOT NULL ,
-    Password varchar(32) NOT NULL,
-    CONSTRAINT pwLength CHECK ( length(Password) = 32 )
+CREATE TABLE Users
+(
+    id       INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    UserName VARCHAR     NOT NULL,
+    Password VARCHAR(32) NOT NULL,
+    CONSTRAINT pwLength CHECK ( LENGTH(Password) = 32 )
 );
 
-CREATE TABLE IngredientAllergy(
-    UserId int,
-    IngredientId int,
-    AllergyName varchar,
+CREATE TABLE IngredientAllergy
+(
+    UserId       INT,
+    IngredientId INT,
+    AllergyName  VARCHAR,
     PRIMARY KEY (UserId, IngredientId),
-    FOREIGN KEY (UserId) REFERENCES Users (id),
-    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id)
+    FOREIGN KEY (UserId) REFERENCES Users (id) ON DELETE CASCADE,
+    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE
 );
 
-CREATE TABLE IngredientPreference(
-    UserId int,
-    IngredientId int,
-    PreferenceName varchar,
+CREATE TABLE IngredientPreference
+(
+    UserId         INT,
+    IngredientId   INT,
+    PreferenceName VARCHAR,
     PRIMARY KEY (UserId, IngredientId),
-    FOREIGN KEY (UserId) REFERENCES Users (id),
-    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id)
+    FOREIGN KEY (UserId) REFERENCES Users (id) ON DELETE CASCADE,
+    FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE
 );
