@@ -3,13 +3,22 @@ package com.dnnr.DNNR_tier3.dataAccess;
 import com.dnnr.DNNR_tier3.models.User;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 @Repository public class Dao extends DaoConnection implements IDao
 {
+    public Dao()
+    {
+        try
+        {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     @Override public User getUserByUsername(String username)
     {
         try (Connection connection = getConnection())
@@ -34,8 +43,8 @@ import java.sql.SQLException;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Users VALUES (DEFAULT, " + user.getUsername()
-                            + ", " + user.getPassword());
+                    "INSERT INTO Users(username, password) VALUES ('" + user.getUsername()
+                            + "', '" + user.getPassword() + "')");
             return statement.execute();
         }
         catch (SQLException throwables)

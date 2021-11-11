@@ -83,7 +83,7 @@ CREATE TABLE Users
     id       INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Username VARCHAR     NOT NULL UNIQUE,
     Password VARCHAR(32) NOT NULL,
-    CONSTRAINT nameLength CHECK ( LENGTH(Username) < 2 ),
+    CONSTRAINT nameLength CHECK ( LENGTH(Username) > 2 ),
     CONSTRAINT pwLength CHECK ( LENGTH(Password) = 32 )
 );
 
