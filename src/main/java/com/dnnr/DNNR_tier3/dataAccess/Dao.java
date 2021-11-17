@@ -26,10 +26,12 @@ import java.sql.*;
             PreparedStatement statement = connection.prepareStatement(
                     "SELECT * FROM Users WHERE username = '" + username + "'");
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            User user = new User(resultSet.getInt("id"), resultSet.getString("Username"),
+            if (!resultSet.next())
+            {
+                return new User(null, null);
+            }
+            return new User(resultSet.getInt("id"), resultSet.getString("Username"),
                     resultSet.getString("Password"));
-            return user;
         }
         catch (SQLException throwables)
         {
