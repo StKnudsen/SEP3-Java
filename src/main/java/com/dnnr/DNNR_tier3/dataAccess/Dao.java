@@ -38,13 +38,13 @@ import java.sql.*;
         return null;
     }
 
-    @Override public Boolean setUser(User user)
+    @Override public Boolean setUser(User newUser)
     {
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Users(username, password) VALUES ('" + user.getUsername()
-                            + "', '" + user.getPassword() + "')");
+                    "INSERT INTO Users(username, password) VALUES ('" + newUser.getUsername()
+                            + "', '" + newUser.getPassword() + "')");
             return statement.execute();
         }
         catch (SQLException throwables)

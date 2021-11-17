@@ -7,6 +7,6 @@ import java.util.List;
 public interface IDao
 {
      User getUserByUsername(String username);
-     Boolean setUser(User user);
+     Boolean setUser(User newUser);
      //List<User> getAllUsers();
 }

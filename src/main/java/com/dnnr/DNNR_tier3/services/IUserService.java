@@ -8,5 +8,6 @@ public interface IUserService
 {
    // List<User> getAllUsers();
     User getUserByUsername(String username);
-    void setUser(User user);
+    void setUser(User newUser);
 }
+
