@@ -139,3 +139,13 @@ CREATE TABLE FoodGroupPreference
     FOREIGN KEY (UserId) REFERENCES Users (id),
     FOREIGN KEY (FoodGroupId) REFERENCES FoodGroup (id)
 );
+
+CREATE TABLE Colours
+(
+    Name varchar PRIMARY KEY
+);
+
+CREATE TABLE Animals
+(
+    Name varchar PRIMARY KEY
+);
