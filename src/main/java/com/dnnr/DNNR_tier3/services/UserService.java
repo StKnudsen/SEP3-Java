@@ -1,6 +1,7 @@
 package com.dnnr.DNNR_tier3.services;
 
 import com.dnnr.DNNR_tier3.dataAccess.IDao;
+import com.dnnr.DNNR_tier3.models.DatabaseCountContainer;
 import com.dnnr.DNNR_tier3.models.User;
 import org.springframework.stereotype.Component;
 
@@ -26,4 +27,13 @@ public class UserService implements IUserService
     {
     dao.setUser(user);
     }
+
+    @Override public DatabaseCountContainer getDatabaseCount()
+    {
+        int animalCount = dao.getAnimalCount();
+        int colourCount = dao.getColourCount();
+
+        return new DatabaseCountContainer(animalCount, colourCount);
+    }
+
 }

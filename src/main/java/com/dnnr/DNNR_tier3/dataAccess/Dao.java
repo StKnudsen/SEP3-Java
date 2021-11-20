@@ -56,6 +56,42 @@ import java.sql.*;
         return false;
     }
 
+    @Override public int getAnimalCount()
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "SELECT count(name) FROM animals"
+            );
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("count");
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override public int getColourCount()
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "SELECT count(name) FROM colours"
+            );
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("count");
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return 0;
+    }
+
    /* @Override public List<User> getAllUsers()
     {
         try (Connection connection = getConnection())

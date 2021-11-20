@@ -1,5 +1,6 @@
 package com.dnnr.DNNR_tier3.controllers;
 
+import com.dnnr.DNNR_tier3.models.DatabaseCountContainer;
 import com.dnnr.DNNR_tier3.models.User;
 import com.dnnr.DNNR_tier3.services.IUserService;
 import org.springframework.web.bind.annotation.*;
@@ -27,4 +28,8 @@ public class UserController implements IUserController
         userService.setUser(newUser);
     }
 
+    @GetMapping(value = "/user") public DatabaseCountContainer getDatabaseCount()
+    {
+        return userService.getDatabaseCount();
+    }
 }

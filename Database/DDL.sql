@@ -142,10 +142,12 @@ CREATE TABLE FoodGroupPreference
 
 CREATE TABLE Colours
 (
-    Name varchar PRIMARY KEY
+    Name VARCHAR,
+    Id   INT PRIMARY KEY
 );
 
 CREATE TABLE Animals
 (
-    Name varchar PRIMARY KEY
+    Name VARCHAR,
+    Id   INT PRIMARY KEY
 );
