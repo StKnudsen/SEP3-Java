@@ -28,7 +28,7 @@ public class UserController implements IUserController
         userService.setUser(newUser);
     }
 
-    @GetMapping(value = "/user") public DatabaseCountContainer getDatabaseCount()
+    @GetMapping(value = "/user/guestUserCount") public DatabaseCountContainer getDatabaseCount()
     {
         return userService.getDatabaseCount();
     }
