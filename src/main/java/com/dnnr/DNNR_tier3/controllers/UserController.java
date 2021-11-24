@@ -1,12 +1,12 @@
 package com.dnnr.DNNR_tier3.controllers;
 
 import com.dnnr.DNNR_tier3.models.DatabaseCountContainer;
+import com.dnnr.DNNR_tier3.models.RegisteredUser;
 import com.dnnr.DNNR_tier3.models.User;
 import com.dnnr.DNNR_tier3.services.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
 public class UserController implements IUserController
@@ -23,12 +23,17 @@ public class UserController implements IUserController
         return userService.getUserByUsername(username);
     }
 
-    @PostMapping(value = "/user") public void setUser(@RequestBody User newUser)
+    @PostMapping(value = "/user") public void setUser(@RequestBody RegisteredUser newRegisteredUser)
     {
-        userService.setUser(newUser);
+        userService.setUser(newRegisteredUser);
     }
 
-    @GetMapping(value = "/user/guestUserCount") public DatabaseCountContainer getDatabaseCount()
+    @GetMapping(value = "/user/guestUser") public User getGuestUser(@RequestParam int colourId,@RequestParam int animalId)
+    {
+        return userService.createGuestUser(colourId, animalId);
+    }
+
+    @GetMapping(value = "/user/guestColoursAnimals") public DatabaseCountContainer getDatabaseCount()
     {
         return userService.getDatabaseCount();
     }

@@ -1,15 +1,14 @@
 package com.dnnr.DNNR_tier3.dataAccess;
 
-import com.dnnr.DNNR_tier3.models.DatabaseCountContainer;
-import com.dnnr.DNNR_tier3.models.User;
-
-import java.util.List;
+import com.dnnr.DNNR_tier3.models.RegisteredUser;
 
 public interface IDao
 {
-     User getUserByUsername(String username);
-     Boolean setUser(User user);
+     RegisteredUser getUserByUsername(String username);
+     Boolean setUser(RegisteredUser registeredUser);
      int getAnimalCount();
      int getColourCount();
+     String getAnimal(int id);
+     String getColour(int id);
      //List<User> getAllUsers();
 }

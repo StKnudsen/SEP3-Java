@@ -1,6 +1,6 @@
 package com.dnnr.DNNR_tier3.dataAccess;
 
-import com.dnnr.DNNR_tier3.models.User;
+import com.dnnr.DNNR_tier3.models.RegisteredUser;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -19,7 +19,7 @@ import java.sql.*;
         }
     }
 
-    @Override public User getUserByUsername(String username)
+    @Override public RegisteredUser getUserByUsername(String username)
     {
         try (Connection connection = getConnection())
         {
@@ -28,9 +28,9 @@ import java.sql.*;
             ResultSet resultSet = statement.executeQuery();
             if (!resultSet.next())
             {
-                return new User(null, null);
+                return new RegisteredUser(null, null);
             }
-            return new User(resultSet.getInt("id"), resultSet.getString("Username"),
+            return new RegisteredUser(resultSet.getInt("id"), resultSet.getString("Username"),
                     resultSet.getString("Password"));
         }
         catch (SQLException throwables)
@@ -40,13 +40,13 @@ import java.sql.*;
         return null;
     }
 
-    @Override public Boolean setUser(User user)
+    @Override public Boolean setUser(RegisteredUser registeredUser)
     {
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Users(username, password) VALUES ('" + user.getUsername()
-                            + "', '" + user.getPassword() + "')");
+                    "INSERT INTO Users(username, password) VALUES ('" + registeredUser.getUsername()
+                            + "', '" + registeredUser.getPassword() + "')");
             return statement.execute();
         }
         catch (SQLException throwables)
@@ -91,6 +91,46 @@ import java.sql.*;
         }
         return 0;
     }
+
+    @Override public String getAnimal(int id)
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "SELECT name FROM animals WHERE id = " + id
+            );
+
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getString("name");
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public String getColour(int id)
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "SELECT name FROM colours WHERE id = " + id
+            );
+
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getString("name");
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+
 
    /* @Override public List<User> getAllUsers()
     {

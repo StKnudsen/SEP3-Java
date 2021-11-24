@@ -1,35 +1,16 @@
 package com.dnnr.DNNR_tier3.models;
 
-public class User
+public abstract class User
 {
-    private String username, password;
-    private int userId;
+  private final String username;
 
-    public User(String username, String password)
-    {
-        this.username = username;
-        this.password = password;
-    }
+  public User(String name)
+  {
+    this.username = name;
+  }
 
-    public User(int userId, String username, String password)
-    {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-    }
-
-    public String getUsername()
-    {
-        return username;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public int getUserId()
-    {
-        return userId;
-    }
+  public String getUsername()
+  {
+    return username;
+  }
 }
