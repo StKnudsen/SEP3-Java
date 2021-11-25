@@ -234,7 +234,7 @@ INSERT INTO ingredientpreference(userid, ingredientid, preferencename)
 VALUES (1, 18, 'Saltgris');
 
 INSERT INTO colours (name)
-VALUES ('Rosa'), ('Lysegrøn'), ('Brun'), ('Mørkegul'), ('Lilla'), ('Lysegult'), ('Violet'),
+VALUES ('Rosa'), ('Lysegrøn'), ('Brun'), ('Mørkegul'), ('Lilla'), ('Lysegul'), ('Violet'),
     ('Mørkegrøn'), ('Abrikosfarvet'), ('Bronzefarvet'), ('Karmin'), ('Karmesin'), ('Rosenrød'),
     ('Turkisblå'), ('Skarlagen'), ('Kobberfarvet'), ('Gul'), ('Khaki'), ('Beige'), ('Nøgen'),
     ('Indigo'), ('Olivengrøn'), ('Laksefarvet'), ('Himmelblå'), ('Ultramarin'),
