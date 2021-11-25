@@ -1,7 +1,7 @@
 package com.dnnr.DNNR_tier3.services;
 
 import com.dnnr.DNNR_tier3.dataAccess.IDao;
-import com.dnnr.DNNR_tier3.models.DatabaseCountContainer;
+import com.dnnr.DNNR_tier3.models.ColourAnimalCount;
 import com.dnnr.DNNR_tier3.models.GuestUser;
 import com.dnnr.DNNR_tier3.models.RegisteredUser;
 import com.dnnr.DNNR_tier3.models.User;
@@ -29,12 +29,12 @@ public class UserService implements IUserService
     dao.setUser(registeredUser);
     }
 
-    @Override public DatabaseCountContainer getDatabaseCount()
+    @Override public ColourAnimalCount getDatabaseCount()
     {
         int animalCount = dao.getAnimalCount();
         int colourCount = dao.getColourCount();
 
-        return new DatabaseCountContainer(animalCount, colourCount);
+        return new ColourAnimalCount(animalCount, colourCount);
     }
 
     @Override public User createGuestUser(int colourId, int animalId)

@@ -1,6 +1,6 @@
 package com.dnnr.DNNR_tier3.controllers;
 
-import com.dnnr.DNNR_tier3.models.DatabaseCountContainer;
+import com.dnnr.DNNR_tier3.models.ColourAnimalCount;
 import com.dnnr.DNNR_tier3.models.RegisteredUser;
 import com.dnnr.DNNR_tier3.models.User;
 import com.dnnr.DNNR_tier3.services.IUserService;
@@ -33,7 +33,7 @@ public class UserController implements IUserController
         return userService.createGuestUser(colourId, animalId);
     }
 
-    @GetMapping(value = "/user/guestColoursAnimals") public DatabaseCountContainer getDatabaseCount()
+    @GetMapping(value = "/user/guestColoursAnimals") public ColourAnimalCount getDatabaseCount()
     {
         return userService.getDatabaseCount();
     }
