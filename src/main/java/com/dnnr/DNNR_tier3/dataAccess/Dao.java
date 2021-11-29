@@ -4,6 +4,7 @@ import com.dnnr.DNNR_tier3.models.RegisteredUser;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.TreeMap;
 
 @Repository public class Dao extends DaoConnection implements IDao
 {
@@ -127,6 +128,38 @@ import java.sql.*;
         {
             throwables.printStackTrace();
         }
+        return null;
+    }
+
+    @Override public TreeMap<Integer, String> getRecipes()
+    {
+        TreeMap<Integer, String> recipes = new TreeMap<>();
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM recipe ORDER BY RANDOM() LIMIT ("
+                    + "SELECT COUNT(*) FROM recipe"
+                    + ")"
+            );
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next())
+            {
+                recipes.put(
+                    resultSet.getInt("id"),
+                    resultSet.getString("Name")
+                );
+            }
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return recipes;
+    }
+
+    @Override public TreeMap<Integer, String> getRestaurants()
+    {
         return null;
     }
 
