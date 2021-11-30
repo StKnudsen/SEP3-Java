@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Dictionary;
 
 public class AdminDao extends DaoConnection implements IAdminDao
 {
@@ -66,4 +66,17 @@ public class AdminDao extends DaoConnection implements IAdminDao
       return false;
     }
   }
+
+  @Override public Dictionary<Integer, String> getFoodgroupList()
+  {
+    //TODO
+    return null;
+  }
+
+  @Override public Dictionary<Integer, String> getIngredientList()
+  {
+    //TODO
+    return null;
+  }
+
 }
