@@ -18,13 +18,11 @@ public class AdminService implements IAdminService
 
   @Override public Dictionary<Integer, String> getFoodgroupList()
   {
-    //TODO
-    return null;
+    return  adminDao.getFoodgroupList();
   }
 
   @Override public Dictionary<Integer, String> getIngredientList()
   {
-    //TODO
-    return null;
+    return adminDao.getIngredientList();
   }
 }

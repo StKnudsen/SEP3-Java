@@ -1,14 +1,14 @@
 package com.dnnr.DNNR_tier3.dataAccess.admin;
 
 import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
+import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.Locale;
 
-public class AdminDao extends DaoConnection implements IAdminDao
+@Repository public class AdminDao extends DaoConnection implements IAdminDao
 {
   public AdminDao()
   {
@@ -37,7 +37,7 @@ public class AdminDao extends DaoConnection implements IAdminDao
           "SELECT id FROM ingredient WHERE name = '" + ingredientName + "'")
           .executeQuery().getInt("id");
       //Kalder ny metode til at sætte ingrediensen sammen med dens fødevaregrupper
-      addIngredientsToFoodgroups(ingredientId, foodgroup);
+      addIngredientsToFoodgroup(ingredientId, foodgroup);
 
       //giver true hvis det hele virker
       return true;
@@ -49,7 +49,7 @@ public class AdminDao extends DaoConnection implements IAdminDao
     return false;
   }
 
-  public boolean addIngredientsToFoodgroups(int ingredientId,
+  public boolean addIngredientsToFoodgroup(int ingredientId,
       int foodgroup)
   {
     try(Connection connection = getConnection())
@@ -69,13 +69,47 @@ public class AdminDao extends DaoConnection implements IAdminDao
 
   @Override public Dictionary<Integer, String> getFoodgroupList()
   {
-    //TODO
+    Dictionary<Integer, String> foodGroupList = new Hashtable<>();
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM foodgroup");
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next())
+      {
+        foodGroupList.put(
+            resultSet.getInt("id"),
+            resultSet.getString("name").toLowerCase());
+      }
+      return foodGroupList;
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
     return null;
   }
 
   @Override public Dictionary<Integer, String> getIngredientList()
   {
-    //TODO
+    Dictionary<Integer, String> ingredientList = new Hashtable<>();
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM ingredient");
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next())
+      {
+        ingredientList.put(
+            resultSet.getInt("id"),
+            resultSet.getString("name").toLowerCase());
+      }
+      return ingredientList;
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
     return null;
   }
 
