@@ -2,7 +2,6 @@ INSERT INTO users (username, password)
 VALUES ('Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
        ('Hans', '23a8cadbee3c6d52a8bdc33aa962f5be');/*fisk*/
 
-
 INSERT INTO recipe (name)
 VALUES ('Kylling Korma'),
        ('Pandekager'),
@@ -224,14 +223,14 @@ VALUES (6, 1),
 INSERT INTO foodgroupallergy (userid, foodgroupid)
 VALUES (1, 4);
 
-INSERT INTO foodgrouppreference(userid, foodgroupid)
-VALUES (2, 18);
+INSERT INTO foodgroupaversion(userid, foodgroupid)
+VALUES (2, 18); --Religiøst bange for alkohol
 
 INSERT INTO ingredientallergy(userid, ingredientid, allergyname)
 VALUES (2, 9, 'Paprika-allergi');
 
-INSERT INTO ingredientpreference(userid, ingredientid, preferencename)
-VALUES (1, 18, 'Saltgris');
+INSERT INTO ingredientaversion(userid, ingredientid, preferencename)
+VALUES (1, 18, 'Højt blodtryk');
 
 INSERT INTO colours (name)
 VALUES ('Rosa'), ('Lysegrøn'), ('Brun'), ('Mørkegul'), ('Lilla'), ('Lysegul'), ('Violet'),

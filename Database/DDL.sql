@@ -1,4 +1,5 @@
 DROP SCHEMA IF EXISTS dnnr CASCADE;
+
 CREATE SCHEMA dnnr;
 SET SCHEMA 'dnnr';
 
@@ -98,7 +99,7 @@ CREATE TABLE IngredientAllergy
     FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE
 );
 
-CREATE TABLE IngredientPreference
+CREATE TABLE IngredientAversion
 (
     UserId         INT,
     IngredientId   INT,
@@ -132,7 +133,7 @@ CREATE TABLE FoodGroupAllergy
     FOREIGN KEY (FoodGroupId) REFERENCES FoodGroup (id)
 );
 
-CREATE TABLE FoodGroupPreference
+CREATE TABLE FoodGroupAversion
 (
     UserId      INT,
     FoodGroupId INT,
