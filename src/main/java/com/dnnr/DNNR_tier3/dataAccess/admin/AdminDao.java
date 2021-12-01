@@ -29,12 +29,12 @@ import java.util.Locale;
     {
       // Sætter ingrediensen ind
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO INGREDIENT (name) VALUES ('" + ingredientName + "')");
+          "INSERT INTO Ingredient (name) VALUES ('" + ingredientName + "')");
       statement.execute();
 
       // Tager id ud fra den indsatte ingrediens
       int ingredientId = connection.prepareStatement(
-          "SELECT id FROM ingredient WHERE name = '" + ingredientName + "'")
+          "SELECT id FROM Ingredient WHERE name = '" + ingredientName + "'")
           .executeQuery().getInt("id");
       //Kalder ny metode til at sætte ingrediensen sammen med dens fødevaregrupper
       addIngredientsToFoodgroup(ingredientId, foodgroup);
