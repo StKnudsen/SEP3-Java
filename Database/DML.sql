@@ -1,6 +1,7 @@
 INSERT INTO users (username, password)
 VALUES ('Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
-       ('Hans', '23a8cadbee3c6d52a8bdc33aa962f5be');/*fisk*/
+       ('Hans', '23a8cadbee3c6d52a8bdc33aa962f5be'),/*fisk*/
+       ('Admin', 'eb0a191797624dd3a48fa681d3061212') /*master*/;
 
 INSERT INTO recipe (name)
 VALUES ('Kylling Korma'),
