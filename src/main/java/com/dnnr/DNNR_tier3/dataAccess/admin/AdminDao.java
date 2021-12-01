@@ -33,9 +33,12 @@ import java.util.Locale;
       statement.execute();
 
       // Tager id ud fra den indsatte ingrediens
-      int ingredientId = connection.prepareStatement(
-          "SELECT id FROM Ingredient WHERE name = '" + ingredientName + "'")
-          .executeQuery().getInt("id");
+      statement = connection.prepareStatement(
+          "SELECT id FROM Ingredient WHERE name = '" + ingredientName + "'");
+      ResultSet resultSet = statement.executeQuery();
+      resultSet.next();
+      int ingredientId = resultSet.getInt("id");
+
       //Kalder ny metode til at sætte ingrediensen sammen med dens fødevaregrupper
       addIngredientsToFoodgroup(ingredientId, foodgroup);
 
