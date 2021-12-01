@@ -4,6 +4,7 @@ import com.dnnr.DNNR_tier3.models.RegisteredUser;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.TreeMap;
 
 @Repository public class Dao extends DaoConnection implements IDao
 {
@@ -129,8 +130,6 @@ import java.sql.*;
         }
         return null;
     }
-
-
 
    /* @Override public List<User> getAllUsers()
     {
