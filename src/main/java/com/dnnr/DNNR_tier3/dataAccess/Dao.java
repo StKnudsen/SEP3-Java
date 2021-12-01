@@ -131,40 +131,6 @@ import java.util.TreeMap;
         return null;
     }
 
-    @Override public TreeMap<Integer, String> getRecipes()
-    {
-        TreeMap<Integer, String> recipes = new TreeMap<>();
-        try (Connection connection = getConnection())
-        {
-            PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM recipe ORDER BY RANDOM() LIMIT ("
-                    + "SELECT COUNT(*) FROM recipe"
-                    + ")"
-            );
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next())
-            {
-                recipes.put(
-                    resultSet.getInt("id"),
-                    resultSet.getString("Name")
-                );
-            }
-        }
-        catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-        }
-        return recipes;
-    }
-
-    @Override public TreeMap<Integer, String> getRestaurants()
-    {
-        return null;
-    }
-
-
-
    /* @Override public List<User> getAllUsers()
     {
         try (Connection connection = getConnection())

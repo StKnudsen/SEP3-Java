@@ -12,6 +12,4 @@ public interface IDao
   int getColourCount();
   String getAnimal(int id);
   String getColour(int id);
-  TreeMap<Integer, String> getRecipes();
-  TreeMap<Integer, String> getRestaurants();
 }
