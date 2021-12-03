@@ -9,40 +9,39 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
-@Component
-public class UserService implements IUserService
+@Component public class UserService implements IUserService
 {
-    @Resource IDao dao;
+  @Resource IDao dao;
 
    /* @Override public List<User> getAllUsers()
     {
         return dao.getAllUsers();
     }*/
 
-    @Override public RegisteredUser getUserByUsername(String username)
-    {
-        return dao.getUserByUsername(username);
-    }
+  @Override public RegisteredUser getUserByUsername(String username)
+  {
+    return dao.getUserByUsername(username);
+  }
 
-    @Override public void setUser(RegisteredUser registeredUser)
-    {
+  @Override public void setUser(RegisteredUser registeredUser)
+  {
     dao.setUser(registeredUser);
-    }
+  }
 
-    @Override public ColourAnimalCount getDatabaseCount()
-    {
-        int animalCount = dao.getAnimalCount();
-        int colourCount = dao.getColourCount();
+  @Override public ColourAnimalCount getDatabaseCount()
+  {
+    int animalCount = dao.getAnimalCount();
+    int colourCount = dao.getColourCount();
 
-        return new ColourAnimalCount(animalCount, colourCount);
-    }
+    return new ColourAnimalCount(animalCount, colourCount);
+  }
 
-    @Override public User createGuestUser(int colourId, int animalId)
-    {
-        String animal = dao.getAnimal(animalId);
-        String colour = dao.getColour(colourId);
+  @Override public User createGuestUser(int colourId, int animalId)
+  {
+    String animal = dao.getAnimal(animalId);
+    String colour = dao.getColour(colourId);
 
-        return new GuestUser(colour + " " + animal);
-    }
+    return new GuestUser(colour + " " + animal);
+  }
 
 }

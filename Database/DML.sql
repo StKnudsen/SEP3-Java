@@ -553,4 +553,15 @@ VALUES ('Agatudse'),
        ('Zebra'),
        ('Zebramangust');
 
-SELECT id FROM ingredient WHERE name = 'Hvedemel'
+
+INSERT INTO city
+VALUES (1234, 'Muleby');
+
+INSERT INTO address(streetname, housenumber, postalcode)
+VALUES ('AndersAndVej', 4, 1234),
+       ('AndersAndVej', 286, 1234);
+
+INSERT INTO restaurant(cvr, name, theme, addressid)
+VALUES (15, 'McDonalds', 'FastFood', 1),
+       (94, 'Noma', 'Nordisk mad', 2);
+
