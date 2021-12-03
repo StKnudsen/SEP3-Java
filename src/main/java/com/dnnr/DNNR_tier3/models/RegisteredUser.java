@@ -11,9 +11,9 @@ public class RegisteredUser extends User
         this.password = password;
     }
 
-    public RegisteredUser(int userId, String username, String password)
+    public RegisteredUser(int userId, String username, String password, String role)
     {
-        super(username);
+        super(username, role);
         this.userId = userId;
         this.password = password;
     }

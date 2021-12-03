@@ -1,7 +1,7 @@
-INSERT INTO users (username, password)
-VALUES ('Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
-       ('Hans', '23a8cadbee3c6d52a8bdc33aa962f5be');/*fisk*/
-
+INSERT INTO users (role, username, password)
+VALUES ('User', 'Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
+       ('User', 'Hans', '23a8cadbee3c6d52a8bdc33aa962f5be'),/*fisk*/
+       ('Admin', 'Admin', 'eb0a191797624dd3a48fa681d3061212') /*master*/;
 
 INSERT INTO recipe (name)
 VALUES ('Kylling Korma'),
@@ -224,14 +224,14 @@ VALUES (6, 1),
 INSERT INTO foodgroupallergy (userid, foodgroupid)
 VALUES (1, 4);
 
-INSERT INTO foodgrouppreference(userid, foodgroupid)
-VALUES (2, 18);
+INSERT INTO foodgroupaversion(userid, foodgroupid)
+VALUES (2, 18); --Religiøst bange for alkohol
 
 INSERT INTO ingredientallergy(userid, ingredientid, allergyname)
 VALUES (2, 9, 'Paprika-allergi');
 
-INSERT INTO ingredientpreference(userid, ingredientid, preferencename)
-VALUES (1, 18, 'Saltgris');
+INSERT INTO ingredientaversion(userid, ingredientid, preferencename)
+VALUES (1, 18, 'Højt blodtryk');
 
 INSERT INTO colours (name)
 VALUES ('Rosa'),
@@ -553,6 +553,7 @@ VALUES ('Agatudse'),
        ('Zebra'),
        ('Zebramangust');
 
+
 INSERT INTO city
 VALUES (1234, 'Muleby');
 
@@ -563,3 +564,4 @@ VALUES ('AndersAndVej', 4, 1234),
 INSERT INTO restaurant(cvr, name, theme, addressid)
 VALUES (15, 'McDonalds', 'FastFood', 1),
        (94, 'Noma', 'Nordisk mad', 2);
+

@@ -32,7 +32,7 @@ import java.util.TreeMap;
                 return new RegisteredUser(null, null);
             }
             return new RegisteredUser(resultSet.getInt("id"), resultSet.getString("Username"),
-                    resultSet.getString("Password"));
+                    resultSet.getString("Password"), resultSet.getString("Role"));
         }
         catch (SQLException throwables)
         {
