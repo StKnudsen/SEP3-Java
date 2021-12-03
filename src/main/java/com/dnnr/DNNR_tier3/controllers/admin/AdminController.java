@@ -4,13 +4,11 @@ import com.dnnr.DNNR_tier3.models.CustomPair;
 import com.dnnr.DNNR_tier3.models.Recipe;
 import com.dnnr.DNNR_tier3.models.RecipeIngredient;
 import com.dnnr.DNNR_tier3.services.admin.IAdminService;
-import org.springframework.data.util.Pair;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Dictionary;
 import java.util.List;
-import java.util.TreeMap;
 
 @RestController
 //@RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
@@ -31,7 +29,9 @@ public class AdminController implements IAdminController
   @Override public boolean addRecipe(
       @RequestBody Recipe recipe)
   {
-    System.out.println("It me opskrift " + recipe.Name + " med ingrediensliste ");
+    List<RecipeIngredient> recipeIngredientsList = recipe.getRecipeIngredient();
+
+    System.out.println("It me opskrift " + recipe.getName() + " med ingrediensliste " + recipeIngredientsList.size());
     return adminService.addRecipe(recipe);
   }
 

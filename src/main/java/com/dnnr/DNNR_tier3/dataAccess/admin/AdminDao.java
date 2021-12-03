@@ -9,7 +9,6 @@ import java.sql.*;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Locale;
 
 @Repository public class AdminDao extends DaoConnection implements IAdminDao
 {
@@ -41,6 +40,7 @@ import java.util.Locale;
                             + "'");
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
+
             int ingredientId = resultSet.getInt("id");
 
             //Kalder ny metode til at sætte ingrediensen sammen med dens fødevaregrupper
@@ -51,6 +51,7 @@ import java.util.Locale;
         }
         catch (SQLException e)
         {
+            System.out.println("AddIngredient catch-clause græder");
             e.printStackTrace();
         }
         return false;
@@ -78,18 +79,21 @@ import java.util.Locale;
         {
             //Sætter recipe ind
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO recipe (name) VALUES ('" + recipe.Name + "')");
+                    "INSERT INTO recipe (name) VALUES ('" + recipe.getName()
+                            + "')");
             statement.execute();
 
             // Tager id ud fra den indsatte recipe
             statement = connection.prepareStatement(
-                    "SELECT id FROM recipe WHERE name = '" + recipe.Name + "'");
+                    "SELECT id FROM recipe WHERE name = '" + recipe.getName()
+                            + "'");
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
             int recipeId = resultSet.getInt("id");
 
             //Kalder ny metode til at sætte opskriften sammen med dens ingredienser
-            addIngredientsToRecipe(recipeId, recipe.RecipeIngredient);
+
+            addIngredientsToRecipe(recipeId, recipe.getRecipeIngredient());
 
             //giver true hvis det hele virker
             return true;
@@ -101,33 +105,43 @@ import java.util.Locale;
         }
     }
 
-    private boolean addIngredientsToRecipe(int recipeId,
+    private void addIngredientsToRecipe(int recipeId,
             List<RecipeIngredient> recipeIngredient)
     {
-        for (RecipeIngredient ingredient : recipeIngredient)
+        try (Connection connection = getConnection())
         {
-            try (Connection connection = getConnection())
+            int ingredientId = 0;
+
+            for (RecipeIngredient ingredient : recipeIngredient)
             {
+
+               /* PreparedStatement statement = connection.prepareStatement(
+                        "SELECT id FROM ingredient WHERE name = '"
+                                + ingredient.getIngredientName() + "'");
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next())
+                {
+                    ingredientId = resultSet.getInt("id");
+                }*/
+
+                int amount = ingredient.getAmount();
+                int unit = ingredient.getUnitId();
+                System.out.println("amount: " + amount);
+                System.out.println("unit: " + unit);
                 PreparedStatement statement = connection.prepareStatement(
                         "INSERT INTO recipeingredients(recipeid, ingredientid, amount, unitid) "
-                                + "VALUES(" +
-                                recipeId + "," +
-                                ingredient + "," +
-                                recipeIngredient.get(ingredient.Amount) + "," +
-                                recipeIngredient.get(ingredient.UnitId) + ")");
-                System.out.println(recipeId);
-                System.out.println(ingredient);
-                System.out.println(ingredient.Amount);
-                System.out.println(ingredient.UnitId);
-                return statement.execute();
-            }
-            catch (SQLException throwables)
-            {
-                throwables.printStackTrace();
-                return false;
+                                + "VALUES(" + recipeId + "," + 42 + "," + amount
+                                + "," + unit + ")");
+                statement.execute();
+
             }
         }
-        return false;
+        catch (SQLException throwables)
+        {
+            System.out.println("AddIngredientsToRecipe catch-clause græder");
+
+            throwables.printStackTrace();
+        }
     }
 
     @Override public Dictionary<Integer, String> getFoodgroupList()

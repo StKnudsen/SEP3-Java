@@ -2,9 +2,9 @@ package com.dnnr.DNNR_tier3.models;
 
 public class RecipeIngredient
 {
-    public String IngredientName;
-    public int Amount;
-    public int UnitId;
+    private String IngredientName;
+    private int Amount;
+    private int UnitId;
 
     public String getIngredientName()
     {
