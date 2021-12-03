@@ -1,8 +1,6 @@
 package com.dnnr.DNNR_tier3.dataAccess;
 
-import com.dnnr.DNNR_tier3.models.RegisteredUser;
-
-import java.util.TreeMap;
+import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
 
 public interface IDao
 {

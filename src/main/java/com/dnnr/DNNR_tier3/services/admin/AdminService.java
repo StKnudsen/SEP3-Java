@@ -1,6 +1,6 @@
 package com.dnnr.DNNR_tier3.services.admin;
 import com.dnnr.DNNR_tier3.dataAccess.admin.IAdminDao;
-import com.dnnr.DNNR_tier3.models.Recipe;
+import com.dnnr.DNNR_tier3.models.food.Recipe;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

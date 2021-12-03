@@ -1,8 +1,7 @@
 package com.dnnr.DNNR_tier3.dataAccess.admin;
 
-import com.dnnr.DNNR_tier3.models.Recipe;
+import com.dnnr.DNNR_tier3.models.food.Recipe;
 
-import java.sql.Connection;
 import java.util.Dictionary;
 
 public interface IAdminDao

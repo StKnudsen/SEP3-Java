@@ -1,6 +1,6 @@
 package com.dnnr.DNNR_tier3.services.group;
 
-import com.dnnr.DNNR_tier3.dataAccess.groupDao.IGroupDao;
+import com.dnnr.DNNR_tier3.dataAccess.group.IGroupDao;
 import com.dnnr.DNNR_tier3.models.CustomPair;
 import org.springframework.stereotype.Component;
 

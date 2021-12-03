@@ -1,10 +1,10 @@
-package com.dnnr.DNNR_tier3.services;
+package com.dnnr.DNNR_tier3.services.user;
 
 import com.dnnr.DNNR_tier3.dataAccess.IDao;
 import com.dnnr.DNNR_tier3.models.ColourAnimalCount;
-import com.dnnr.DNNR_tier3.models.GuestUser;
-import com.dnnr.DNNR_tier3.models.RegisteredUser;
-import com.dnnr.DNNR_tier3.models.User;
+import com.dnnr.DNNR_tier3.models.user.GuestUser;
+import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
+import com.dnnr.DNNR_tier3.models.user.User;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

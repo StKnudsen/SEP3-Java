@@ -1,8 +1,8 @@
-package com.dnnr.DNNR_tier3.controllers;
+package com.dnnr.DNNR_tier3.controllers.user;
 
 import com.dnnr.DNNR_tier3.models.ColourAnimalCount;
-import com.dnnr.DNNR_tier3.models.RegisteredUser;
-import com.dnnr.DNNR_tier3.models.User;
+import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
+import com.dnnr.DNNR_tier3.models.user.User;
 
 public interface IUserController
 {

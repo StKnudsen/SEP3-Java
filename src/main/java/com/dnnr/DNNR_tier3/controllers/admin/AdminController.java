@@ -1,8 +1,8 @@
 package com.dnnr.DNNR_tier3.controllers.admin;
 
 import com.dnnr.DNNR_tier3.models.CustomPair;
-import com.dnnr.DNNR_tier3.models.Recipe;
-import com.dnnr.DNNR_tier3.models.RecipeIngredient;
+import com.dnnr.DNNR_tier3.models.food.Recipe;
+import com.dnnr.DNNR_tier3.models.food.RecipeIngredient;
 import com.dnnr.DNNR_tier3.services.admin.IAdminService;
 import org.springframework.web.bind.annotation.*;
 

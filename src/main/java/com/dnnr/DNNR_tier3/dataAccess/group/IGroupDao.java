@@ -1,4 +1,4 @@
-package com.dnnr.DNNR_tier3.dataAccess.groupDao;
+package com.dnnr.DNNR_tier3.dataAccess.group;
 
 import com.dnnr.DNNR_tier3.models.CustomPair;
 

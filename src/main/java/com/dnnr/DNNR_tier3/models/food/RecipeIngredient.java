@@ -1,4 +1,4 @@
-package com.dnnr.DNNR_tier3.models;
+package com.dnnr.DNNR_tier3.models.food;
 
 public class RecipeIngredient
 {

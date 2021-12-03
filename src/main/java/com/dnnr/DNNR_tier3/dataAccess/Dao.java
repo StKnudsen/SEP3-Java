@@ -1,10 +1,9 @@
 package com.dnnr.DNNR_tier3.dataAccess;
 
-import com.dnnr.DNNR_tier3.models.RegisteredUser;
+import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
-import java.util.TreeMap;
 
 @Repository public class Dao extends DaoConnection implements IDao
 {
