@@ -110,27 +110,32 @@ import java.util.List;
     {
         try (Connection connection = getConnection())
         {
-            int ingredientId = 0;
-
             for (RecipeIngredient ingredient : recipeIngredient)
             {
+                RecipeIngredient temp = new RecipeIngredient(
+                        ingredient.getIngredientName(), ingredient.getAmount(),
+                        ingredient.getUnitId());
 
-               /* PreparedStatement statement = connection.prepareStatement(
+                String tempIngredientName = temp.getIngredientName();
+                String ingredientName = tempIngredientName
+                        .substring(0, 1).toUpperCase() + tempIngredientName.substring(1).toLowerCase();
+                System.out.println("IngredientName: " + ingredientName);
+                int amount = temp.getAmount();
+                int unit = temp.getUnitId();
+
+               PreparedStatement statement = connection.prepareStatement(
                         "SELECT id FROM ingredient WHERE name = '"
-                                + ingredient.getIngredientName() + "'");
+                                + ingredientName + "'");
                 ResultSet resultSet = statement.executeQuery();
-                if (resultSet.next())
-                {
-                    ingredientId = resultSet.getInt("id");
-                }*/
+                resultSet.next();
+                int ingredientId = resultSet.getInt("id");
 
-                int amount = ingredient.getAmount();
-                int unit = ingredient.getUnitId();
                 System.out.println("amount: " + amount);
                 System.out.println("unit: " + unit);
-                PreparedStatement statement = connection.prepareStatement(
+
+                statement = connection.prepareStatement(
                         "INSERT INTO recipeingredients(recipeid, ingredientid, amount, unitid) "
-                                + "VALUES(" + recipeId + "," + 42 + "," + amount
+                                + "VALUES(" + recipeId + "," + ingredientId + "," + amount
                                 + "," + unit + ")");
                 statement.execute();
 

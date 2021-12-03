@@ -6,6 +6,13 @@ public class RecipeIngredient
     private int Amount;
     private int UnitId;
 
+    public RecipeIngredient(String ingredientName, int amount, int unitId)
+    {
+        IngredientName = ingredientName;
+        Amount = amount;
+        UnitId = unitId;
+    }
+
     public String getIngredientName()
     {
         return IngredientName;

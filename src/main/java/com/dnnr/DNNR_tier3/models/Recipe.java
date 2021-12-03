@@ -5,12 +5,11 @@ import java.util.List;
 
 public class Recipe
 {
-    private final String name;
-    private final List<RecipeIngredient> recipeIngredient;
+    private String name;
+    private List<RecipeIngredient> recipeIngredient;
 
-    public Recipe(String name)
+    public Recipe()
     {
-        this.name = name;
         recipeIngredient = new LinkedList<>();
     }
 

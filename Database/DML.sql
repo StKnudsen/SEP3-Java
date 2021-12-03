@@ -552,3 +552,5 @@ VALUES ('Agatudse'),
        ('Yakokse'),
        ('Zebra'),
        ('Zebramangust');
+
+SELECT id FROM ingredient WHERE name = 'Hvedemel'

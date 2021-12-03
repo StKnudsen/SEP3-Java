@@ -30,8 +30,7 @@ public class AdminController implements IAdminController
       @RequestBody Recipe recipe)
   {
     List<RecipeIngredient> recipeIngredientsList = recipe.getRecipeIngredient();
-
-    System.out.println("It me opskrift " + recipe.getName() + " med ingrediensliste " + recipeIngredientsList.size());
+    System.out.println("It me opskrift " + recipe.getName() + " med ingrediensnavn " + recipeIngredientsList.get(0).getIngredientName());
     return adminService.addRecipe(recipe);
   }
 
