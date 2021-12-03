@@ -2,29 +2,29 @@ package com.dnnr.DNNR_tier3.models.food;
 
 public class RecipeIngredient
 {
-    private String IngredientName;
-    private int Amount;
-    private int UnitId;
+    private String ingredientName;
+    private int amount;
+    private int unitId;
 
     public RecipeIngredient(String ingredientName, int amount, int unitId)
     {
-        IngredientName = ingredientName;
-        Amount = amount;
-        UnitId = unitId;
+        this.ingredientName = ingredientName;
+        this.amount = amount;
+        this.unitId = unitId;
     }
 
     public String getIngredientName()
     {
-        return IngredientName;
+        return ingredientName;
     }
 
     public int getAmount()
     {
-        return Amount;
+        return amount;
     }
 
     public int getUnitId()
     {
-        return UnitId;
+        return unitId;
     }
 }
