@@ -20,7 +20,8 @@ import javax.annotation.Resource;
 
   @Override public RegisteredUser getUserByUsername(String username)
   {
-    return dao.getUserByUsername(username);
+    RegisteredUser user = dao.getUserByUsername(username);
+    return user;
   }
 
   @Override public void setUser(RegisteredUser registeredUser)

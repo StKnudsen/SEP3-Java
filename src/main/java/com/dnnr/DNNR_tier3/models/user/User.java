@@ -21,4 +21,8 @@ public abstract class User
     return username;
   }
 
+  public String getRole()
+  {
+    return role;
+  }
 }
