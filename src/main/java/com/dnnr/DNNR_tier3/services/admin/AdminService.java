@@ -55,6 +55,11 @@ public class AdminService implements IAdminService
     return adminDao.getRestaurantList();
   }
 
+  @Override public List<Address> getAddressList()
+  {
+    return adminDao.getAddressList();
+  }
+
   @Override public Address getAddressById(int addressId)
   {
     return adminDao.getAddressById(addressId);

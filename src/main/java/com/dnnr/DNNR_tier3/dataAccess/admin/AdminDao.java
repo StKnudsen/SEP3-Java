@@ -306,6 +306,33 @@ import java.util.List;
         return null;
     }
 
+    @Override public List<Address> getAddressList()
+    {
+        List<Address> addressList = new LinkedList<>();
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM address");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+            {
+                Address address = new Address(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("housenumber"),
+                        resultSet.getString("streetname"),
+                        resultSet.getInt("postalcode")
+                );
+                addressList.add(address);
+            }
+            return addressList;
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
     @Override public Address getAddressById(int addressId)
     {
         try (Connection connection = getConnection())

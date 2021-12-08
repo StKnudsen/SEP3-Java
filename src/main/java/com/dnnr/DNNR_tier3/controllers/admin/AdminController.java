@@ -73,8 +73,13 @@ public class AdminController implements IAdminController
   {
     return adminService.getRestaurantList();
   }
-
   @GetMapping(value = "/address")
+  @Override public List<Address> getAddressList()
+  {
+    return adminService.getAddressList();
+  }
+
+  @GetMapping(value = "/address/{addressId}")
   @Override public Address getAddressById(int addressId)
   {
     return adminService.getAddressById(addressId);

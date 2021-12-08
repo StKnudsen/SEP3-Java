@@ -18,5 +18,6 @@ public interface IAdminDao
     Dictionary<Integer, String> getUnitList();
     Dictionary<Integer, String> getRecipeList();
     List<Restaurant> getRestaurantList();
+    List<Address> getAddressList();
     Address getAddressById(int addressId);
 }

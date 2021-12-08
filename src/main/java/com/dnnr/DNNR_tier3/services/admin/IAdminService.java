@@ -18,6 +18,7 @@ public interface IAdminService
    Dictionary<Integer, String> getUnitList();
    Dictionary<Integer, String> getRecipeList();
    List<Restaurant> getRestaurantList();
-   Address getAddressById(int addressId);
+    List<Address> getAddressList();
+    Address getAddressById(int addressId);
 
 }
