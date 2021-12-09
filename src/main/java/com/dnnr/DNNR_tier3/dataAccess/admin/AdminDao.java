@@ -1,6 +1,8 @@
 package com.dnnr.DNNR_tier3.dataAccess.admin;
 
 import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
+import com.dnnr.DNNR_tier3.models.restaurant.Address;
+import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.food.Recipe;
 import com.dnnr.DNNR_tier3.models.food.RecipeIngredient;
 import org.springframework.stereotype.Repository;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.LinkedList;
 import java.util.List;
 
 @Repository public class AdminDao extends DaoConnection implements IAdminDao
@@ -105,6 +108,45 @@ import java.util.List;
         }
     }
 
+    @Override public boolean addRestaurant(Restaurant restaurant)
+    {
+        try (Connection connection = getConnection())
+        {
+            System.out.println("AdminDao i addRestaurant");
+            // Sætter adresse ind
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO Address(streetname, housenumber, postalcode) VALUES ('"
+                            + restaurant.getAddress().getStreetName() + "', '"
+                            + restaurant.getAddress().getHouseNumber() + "', '"
+                            + restaurant.getAddress().getPostalCode()
+                            + "')");
+            statement.execute();
+
+            // Trækker id ud fra den indsatte adresse
+            statement = connection.prepareStatement(
+                    "SELECT id FROM address WHERE streetname = '"
+                            + restaurant.getAddress().getStreetName() + "'");
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int addressId = resultSet.getInt("id");
+
+            // Tilføjer restaurant med addresseId i databasen
+            statement = connection.prepareStatement(
+                    "INSERT INTO Restaurant(cvr, name, theme, addressid, phonenumber) VALUES ('"
+                            + restaurant.getCvr() + "', '"
+                            + restaurant.getName() + "', '"
+                            + restaurant.getTheme() + "', '"
+                            + addressId + "', '"
+                            + restaurant.getPhoneNumber() + "')");
+            return statement.execute();
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
     private void addIngredientsToRecipe(int recipeId,
             List<RecipeIngredient> recipeIngredient)
     {
@@ -117,13 +159,14 @@ import java.util.List;
                         ingredient.getUnitId());
 
                 String tempIngredientName = temp.getIngredientName();
-                String ingredientName = tempIngredientName
-                        .substring(0, 1).toUpperCase() + tempIngredientName.substring(1).toLowerCase();
+                String ingredientName =
+                        tempIngredientName.substring(0, 1).toUpperCase()
+                                + tempIngredientName.substring(1).toLowerCase();
                 System.out.println("IngredientName: " + ingredientName);
                 int amount = temp.getAmount();
                 int unit = temp.getUnitId();
 
-               PreparedStatement statement = connection.prepareStatement(
+                PreparedStatement statement = connection.prepareStatement(
                         "SELECT id FROM ingredient WHERE name = '"
                                 + ingredientName + "'");
                 ResultSet resultSet = statement.executeQuery();
@@ -135,8 +178,8 @@ import java.util.List;
 
                 statement = connection.prepareStatement(
                         "INSERT INTO recipeingredients(recipeid, ingredientid, amount, unitid) "
-                                + "VALUES(" + recipeId + "," + ingredientId + "," + amount
-                                + "," + unit + ")");
+                                + "VALUES(" + recipeId + "," + ingredientId
+                                + "," + amount + "," + unit + ")");
                 statement.execute();
 
             }
@@ -237,4 +280,79 @@ import java.util.List;
         return null;
     }
 
+    @Override public List<Restaurant> getRestaurantList()
+    {
+        try (Connection connection = getConnection())
+        {
+            List<Restaurant> restaurantList = new LinkedList<>();
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM Restaurant JOIN address a ON a.id = restaurant.addressid");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+            {
+                Restaurant restaurant = new Restaurant(resultSet.getInt("id"),
+                        resultSet.getInt("cvr"), resultSet.getString("name"),
+                        resultSet.getString("theme"),
+                        getAddressById(resultSet.getInt("addressId")),
+                        resultSet.getString("phonenumber"));
+                restaurantList.add(restaurant);
+            }
+            return restaurantList;
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public List<Address> getAddressList()
+    {
+        List<Address> addressList = new LinkedList<>();
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM address");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+            {
+                Address address = new Address(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("housenumber"),
+                        resultSet.getString("streetname"),
+                        resultSet.getInt("postalcode")
+                );
+                addressList.add(address);
+            }
+            return addressList;
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public Address getAddressById(int addressId)
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM Address JOIN city c ON c.postalcode = address.postalcode WHERE id = '"
+                            + addressId + "'");
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next())
+            {
+                return new Address(resultSet.getInt("id"),
+                        resultSet.getInt("housenumber"),
+                        resultSet.getString("streetname"),
+                        resultSet.getInt("postalcode"));
+            }
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }
