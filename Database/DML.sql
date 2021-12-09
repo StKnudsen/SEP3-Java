@@ -1,7 +1,8 @@
 INSERT INTO users (role, username, password)
 VALUES ('User', 'Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
        ('User', 'Hans', '23a8cadbee3c6d52a8bdc33aa962f5be'),/*fisk*/
-       ('Admin', 'Admin', 'eb0a191797624dd3a48fa681d3061212') /*master*/;
+       ('Admin', 'Admin', 'eb0a191797624dd3a48fa681d3061212'), /*master*/
+       ('Restaurateur', 'Lis', '7538ebc37ad0917853e044b9b42bd8a4') /*mad*/;
 
 INSERT INTO recipe (name)
 VALUES ('Kylling Korma'),
@@ -564,4 +565,6 @@ VALUES ('AndersAndVej', 4, 8700),
 INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber)
 VALUES (15, 'McDonalds', 'FastFood', 1, '+4512345678'),
        (94, 'Noma', 'Nordisk mad', 2, '+4587654321');
+
+
 
