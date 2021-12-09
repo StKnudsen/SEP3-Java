@@ -557,14 +557,11 @@ VALUES ('Agatudse'),
        ('Zebra'),
        ('Zebramangust');
 
-
-INSERT INTO city
-VALUES (1234, 'Muleby');
-
 INSERT INTO address(streetname, housenumber, postalcode)
-VALUES ('AndersAndVej', 4, 1234),
-       ('AndersAndVej', 286, 1234);
+VALUES ('AndersAndVej', 4, 8700),
+       ('AndersAndVej', 286, 8700);
 
-INSERT INTO restaurant(cvr, name, theme, addressid)
-VALUES (15, 'McDonalds', 'FastFood', 1),
-       (94, 'Noma', 'Nordisk mad', 2);
+INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber)
+VALUES (15, 'McDonalds', 'FastFood', 1, '+4512345678'),
+       (94, 'Noma', 'Nordisk mad', 2, '+4587654321');
+
