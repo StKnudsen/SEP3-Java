@@ -20,11 +20,12 @@ CREATE TABLE Address
 
 CREATE TABLE Restaurant
 (
-    id        INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    CVR       INT     NOT NULL,
-    Name      VARCHAR NOT NULL,
-    Theme     VARCHAR,
-    AddressId INT,
+    id          INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    CVR         INT         NOT NULL,
+    Name        VARCHAR     NOT NULL,
+    Theme       VARCHAR,
+    AddressId   INT,
+    PhoneNumber VARCHAR(11) NOT NULL CHECK ( PhoneNumber LIKE '+45%') UNIQUE,
     FOREIGN KEY (AddressId) REFERENCES Address (id) ON DELETE SET NULL
 );
 

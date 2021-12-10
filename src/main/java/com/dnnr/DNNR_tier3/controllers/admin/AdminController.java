@@ -1,6 +1,8 @@
 package com.dnnr.DNNR_tier3.controllers.admin;
 
 import com.dnnr.DNNR_tier3.models.CustomPair;
+import com.dnnr.DNNR_tier3.models.restaurant.Address;
+import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.food.Recipe;
 import com.dnnr.DNNR_tier3.models.food.RecipeIngredient;
 import com.dnnr.DNNR_tier3.services.admin.IAdminService;
@@ -21,7 +23,7 @@ public class AdminController implements IAdminController
       @RequestBody CustomPair ingredient)
   {
     System.out.println("It me " + ingredient.getValue());
-    int foodgroup =ingredient.getKey();
+    int foodgroup = ingredient.getKey();
     String ingredientName = ingredient.getValue();
     return adminService.addIngredient(ingredientName, foodgroup);
   }
@@ -39,6 +41,14 @@ public class AdminController implements IAdminController
     List<RecipeIngredient> recipeIngredientsList = recipe.getRecipeIngredient();
     System.out.println("It me opskrift " + recipe.getName() + " med ingrediensnavn " + recipeIngredientsList.get(0).getIngredientName());
     return adminService.addRecipe(recipe);
+  }
+
+  @PostMapping(value = "/addrestaurant")
+  @Override public boolean addRestaurant(@RequestBody Restaurant restaurant)
+  {
+    System.out.println("AdminController i addRestaurant");
+
+    return adminService.addRestaurant(restaurant);
   }
 
   @GetMapping(value = "/foodgroups")
@@ -64,4 +74,22 @@ public class AdminController implements IAdminController
   {
     return adminService.getRecipeList();
   }
+
+  @GetMapping(value = "/restaurants")
+  @Override public List<Restaurant> getRestaurantList()
+  {
+    return adminService.getRestaurantList();
+  }
+  @GetMapping(value = "/address")
+  @Override public List<Address> getAddressList()
+  {
+    return adminService.getAddressList();
+  }
+
+  @GetMapping(value = "/address/{addressId}")
+  @Override public Address getAddressById(int addressId)
+  {
+    return adminService.getAddressById(addressId);
+  }
+
 }
