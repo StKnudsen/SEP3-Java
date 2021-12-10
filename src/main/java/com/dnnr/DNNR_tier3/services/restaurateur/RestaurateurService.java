@@ -2,6 +2,7 @@ package com.dnnr.DNNR_tier3.services.restaurateur;
 
 import com.dnnr.DNNR_tier3.dataAccess.restaurateur.IRestaurateurDao;
 import com.dnnr.DNNR_tier3.models.restaurant.Dish;
+import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.user.User;
 import org.springframework.stereotype.Component;
 
@@ -21,5 +22,10 @@ public class RestaurateurService implements IRestaurateurService{
     @Override
     public List<Dish> getDishList(int restaurantId) {
         return restaurateurDao.getDishList(restaurantId);
+    }
+
+    @Override
+    public List<Restaurant> getRestaurantsFromRestaurateurId(int restaurateurId) {
+        return restaurateurDao.getRestaurantsFromRestaurateurId(restaurateurId);
     }
 }

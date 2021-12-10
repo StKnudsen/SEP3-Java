@@ -2,9 +2,11 @@ package com.dnnr.DNNR_tier3.controllers.restaurateur;
 
 import com.dnnr.DNNR_tier3.models.CustomPair;
 import com.dnnr.DNNR_tier3.models.restaurant.Dish;
+import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.user.User;
 import com.dnnr.DNNR_tier3.services.restaurateur.IRestaurateurService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,5 +36,11 @@ public class RestaurateurController implements IRestaurateurController {
     @Override
     public List<Dish> getDishList(int restaurantId) {
         return restaurateurService.getDishList(restaurantId);
+    }
+
+    @GetMapping(value = "/restaurants/{restaurateurId}")
+    @Override
+    public List<Restaurant> getRestaurantsFromRestaurateurId(@PathVariable int restaurateurId) {
+        return restaurateurService.getRestaurantsFromRestaurateurId(restaurateurId);
     }
 }
