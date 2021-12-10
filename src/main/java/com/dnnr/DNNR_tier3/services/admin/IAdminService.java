@@ -7,6 +7,7 @@ import java.util.Dictionary;
 public interface IAdminService
 {
   boolean addIngredient(String ingredientName, int foodgroup);
+  boolean addFoodGroup(String foodGroupName);
   boolean addRecipe(Recipe recipe);
    Dictionary<Integer, String> getFoodgroupList();
    Dictionary<Integer, String> getIngredientList();

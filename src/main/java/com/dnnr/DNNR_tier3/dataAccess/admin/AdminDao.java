@@ -57,6 +57,23 @@ import java.util.List;
         return false;
     }
 
+    @Override public boolean addFoodGroup(String foodGroupName)
+    {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO foodgroup(name) VALUES('" + foodGroupName + "')"
+            );
+            statement.execute();
+            return true;
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean addIngredientsToFoodgroup(int ingredientId, int foodgroup)
     {
         try (Connection connection = getConnection())
@@ -177,7 +194,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM ingredient");
+                    "SELECT * FROM ingredient ORDER BY name");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {

@@ -7,6 +7,7 @@ import java.util.Dictionary;
 public interface IAdminDao
 {
   boolean addIngredient(String ingredientName, int foodgroup);
+  boolean addFoodGroup(String foodGroupName);
   boolean addIngredientsToFoodgroup(int ingredientId,
       int foodgroup);
   boolean addRecipe(Recipe recipe);

@@ -17,6 +17,11 @@ public class AdminService implements IAdminService
    return  adminDao.addIngredient(ingredientName, foodgroup);
   }
 
+  @Override public boolean addFoodGroup(String foodGroupName)
+  {
+    return adminDao.addFoodGroup(foodGroupName);
+  }
+
   @Override public boolean addRecipe(Recipe recipe)
   {
     return adminDao.addRecipe(recipe);

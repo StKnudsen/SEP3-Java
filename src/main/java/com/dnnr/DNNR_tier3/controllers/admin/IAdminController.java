@@ -8,6 +8,7 @@ import java.util.Dictionary;
 public interface IAdminController
 {
  boolean addIngredient(CustomPair ingredient);
+ boolean addFoodGroup(String foodGroupName);
  boolean addRecipe(Recipe recipe);
   Dictionary<Integer, String> getFoodgroupList();
   Dictionary<Integer, String> getIngredientList();
