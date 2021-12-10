@@ -23,6 +23,7 @@ public class RestaurateurController implements IRestaurateurController {
     @PostMapping(value = "/adddish")
     @Override
     public boolean addDish(CustomPair dish) {
+        System.out.println("Nåede til RestaurateurController");
         int restaurantId = dish.getKey();
         String DishNameAndDescription = dish.getValue();
         String[] seperate = DishNameAndDescription.split(";",2);

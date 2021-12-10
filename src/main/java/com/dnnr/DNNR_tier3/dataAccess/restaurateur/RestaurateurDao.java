@@ -24,6 +24,9 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
     @Override
     public boolean addDish(Dish dish) {
         try (Connection connection = getConnection()) {
+            System.out.println("Nåede til RestaurateurDao");
+
+
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO Dish (Name, Description, RestaurantId) VALUES ('"
                             + dish.getName() + ","

@@ -569,16 +569,5 @@ VALUES (DEFAULT, 'Restaurateur', 'Lis', '7538ebc37ad0917853e044b9b42bd8a4') /*ma
 
 INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber, ownerid)
 VALUES (15, 'McDonalds', 'FastFood', 3, '+4512345678',4),
-       (94, 'Noma', 'Nordisk mad', 4, '+4587654321',4);
-
-INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber, ownerid)
-VALUES (86, 'McNuggets', 'Kyllingebidder', 3, '+4570121416', 4);
-
-sELECT * from restaurant JOIN address a ON a.id = restaurant.addressid JOIN city c ON c.postalcode = a.postalcode
-
-
-
-SELECT * FROM restaurant JOIN address a ON a.id = restaurant.addressid
-                            JOIN city c ON c.postalcode = a.postalcode
-                            WHERE ownerId = 4;
-
+       (94, 'Noma', 'Nordisk mad', 4, '+4587654321',4),
+       (86, 'McNuggets', 'Kyllingebidder', 3, '+4570121416', 4);
