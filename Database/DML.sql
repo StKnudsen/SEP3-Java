@@ -1,3 +1,5 @@
+SET SCHEMA 'dnnr';
+
 INSERT INTO users (role, username, password)
 VALUES ('User', 'Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
        ('User', 'Hans', '23a8cadbee3c6d52a8bdc33aa962f5be'),/*fisk*/
@@ -58,7 +60,8 @@ VALUES ('Løg'),
        ('Torskefilet'),
        ('Laurbærblade'),
        ('Hvide asparges'),
-       ('Tarteletskaller');
+       ('Tarteletskaller'),
+       ('Jordnødder');
 
 INSERT INTO unit (name)
 VALUES (' '),
@@ -565,6 +568,5 @@ VALUES ('AndersAndVej', 4, 8700),
 INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber)
 VALUES (15, 'McDonalds', 'FastFood', 1, '+4512345678'),
        (94, 'Noma', 'Nordisk mad', 2, '+4587654321');
-
 
 

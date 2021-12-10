@@ -68,16 +68,10 @@ CREATE TABLE RecipeIngredients
 CREATE TABLE Dish
 (
     id   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    Name VARCHAR NOT NULL
-);
-
-CREATE TABLE DishIngredients
-(
-    DishId        INT,
-    IngredientsId INT,
-    PRIMARY KEY (DishId, IngredientsId),
-    FOREIGN KEY (DishId) REFERENCES Dish (id) ON DELETE CASCADE,
-    FOREIGN KEY (IngredientsId) REFERENCES Ingredient (id) ON DELETE CASCADE
+    Name VARCHAR NOT NULL,
+    Description VARCHAR,
+    RestaurantId INT,
+    FOREIGN KEY (RestaurantId) REFERENCES Restaurant (id) ON DELETE CASCADE
 );
 
 CREATE TABLE Users
