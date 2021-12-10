@@ -27,6 +27,13 @@ public class AdminController implements IAdminController
     String ingredientName = ingredient.getValue();
     return adminService.addIngredient(ingredientName, foodgroup);
   }
+
+  @PostMapping(value = "/addfoodgroup")
+  @Override public boolean addFoodGroup(@RequestParam String foodGroupName)
+  {
+    return adminService.addFoodGroup(foodGroupName);
+  }
+
   @PostMapping(value = "/addrecipe")
   @Override public boolean addRecipe(
       @RequestBody Recipe recipe)

@@ -10,6 +10,7 @@ import java.util.List;
 public interface IAdminService
 {
   boolean addIngredient(String ingredientName, int foodgroup);
+  boolean addFoodGroup(String foodGroupName);
   boolean addRecipe(Recipe recipe);
   boolean addRestaurant(Restaurant restaurant);
 

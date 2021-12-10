@@ -57,7 +57,7 @@ CREATE TABLE RecipeIngredients
 (
     RecipeId     INT,
     IngredientId INT,
-    Amount       DECIMAL(6, 2),
+    Amount       DECIMAL(6, 1),
     UnitId       INT,
     PRIMARY KEY (RecipeId, IngredientId),
     FOREIGN KEY (RecipeId) REFERENCES Recipe (id) ON DELETE CASCADE,
