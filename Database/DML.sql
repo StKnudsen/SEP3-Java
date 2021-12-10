@@ -1,3 +1,5 @@
+SET SCHEMA 'dnnr';
+
 INSERT INTO users (role, username, password)
 VALUES ('User', 'Bob', '5f4dcc3b5aa765d61d8327deb882cf99'),/*password*/
        ('User', 'Hans', '23a8cadbee3c6d52a8bdc33aa962f5be'),/*fisk*/

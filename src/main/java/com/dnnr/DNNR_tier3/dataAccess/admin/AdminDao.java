@@ -192,6 +192,7 @@ import java.util.List;
         }
     }
 
+    /*  De to metoder er flyttet til General DAO
     @Override public Dictionary<Integer, String> getFoodgroupList()
     {
         Dictionary<Integer, String> foodGroupList = new Hashtable<>();
@@ -235,6 +236,7 @@ import java.util.List;
         }
         return null;
     }
+    */
 
     @Override public Dictionary<Integer, String> getUnitList()
     {
