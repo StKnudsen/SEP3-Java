@@ -1,7 +1,6 @@
 package com.dnnr.DNNR_tier3.services.user;
 
 import com.dnnr.DNNR_tier3.dataAccess.authentication.IAuthenticationDao;
-import com.dnnr.DNNR_tier3.dataAccess.general.IGeneralDao;
 import com.dnnr.DNNR_tier3.models.ColourAnimalCount;
 import com.dnnr.DNNR_tier3.models.user.GuestUser;
 import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
@@ -9,11 +8,9 @@ import com.dnnr.DNNR_tier3.models.user.User;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.Dictionary;
 
 @Component public class UserService implements IUserService
 {
-  @Resource IGeneralDao generalDao;
   @Resource IAuthenticationDao authenticationDao;
 
   @Override public RegisteredUser getUserByUsername(String username)
@@ -42,15 +39,4 @@ import java.util.Dictionary;
 
     return new GuestUser(colour + " " + animal);
   }
-
-  @Override public Dictionary<Integer, String> getFoodGroupList()
-  {
-    return generalDao.getFoodgroupList();
-  }
-
-  @Override public Dictionary<Integer, String> getIngredientList()
-  {
-    return generalDao.getIngredientList();
-  }
-
 }

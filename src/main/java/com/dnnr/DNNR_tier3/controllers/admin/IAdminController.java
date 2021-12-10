@@ -10,15 +10,12 @@ import java.util.List;
 
 public interface IAdminController
 {
- boolean addIngredient(CustomPair ingredient);
- boolean addRecipe(Recipe recipe);
- boolean addRestaurant(Restaurant restaurant);
-
- Dictionary<Integer, String> getFoodgroupList();
-  Dictionary<Integer, String> getIngredientList();
+  boolean addIngredient(CustomPair ingredient);
+  boolean addRecipe(Recipe recipe);
+  boolean addRestaurant(Restaurant restaurant);
   Dictionary<Integer, String> getUnitList();
-  Dictionary<Integer,String> getRecipeList();
- List<Restaurant> getRestaurantList();
- List<Address> getAddressList();
- Address getAddressById(int addressId);
+  Dictionary<Integer, String> getRecipeList();
+  List<Restaurant> getRestaurantList();
+  List<Address> getAddressList();
+  Address getAddressById(int addressId);
 }

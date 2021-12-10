@@ -12,6 +12,4 @@ public interface IUserService
     void setUser(RegisteredUser registeredUser);
     ColourAnimalCount getDatabaseCount();
     User createGuestUser(int colourId, int animalId);
-    Dictionary<Integer, String> getFoodGroupList();
-    Dictionary<Integer, String> getIngredientList();
 }

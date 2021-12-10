@@ -32,16 +32,6 @@ public class AdminService implements IAdminService
     return adminDao.addRestaurant(restaurant);
   }
 
-  @Override public Dictionary<Integer, String> getFoodgroupList()
-  {
-    return  generalDao.getFoodgroupList();
-  }
-
-  @Override public Dictionary<Integer, String> getIngredientList()
-  {
-    return generalDao.getIngredientList();
-  }
-
   @Override public Dictionary<Integer, String> getUnitList()
   {
     return adminDao.getUnitList();

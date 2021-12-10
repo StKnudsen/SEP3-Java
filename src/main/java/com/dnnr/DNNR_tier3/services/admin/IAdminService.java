@@ -11,14 +11,12 @@ public interface IAdminService
 {
   boolean addIngredient(String ingredientName, int foodgroup);
   boolean addRecipe(Recipe recipe);
-    boolean addRestaurant(Restaurant restaurant);
+  boolean addRestaurant(Restaurant restaurant);
 
-    Dictionary<Integer, String> getFoodgroupList();
-   Dictionary<Integer, String> getIngredientList();
-   Dictionary<Integer, String> getUnitList();
-   Dictionary<Integer, String> getRecipeList();
-   List<Restaurant> getRestaurantList();
-    List<Address> getAddressList();
-    Address getAddressById(int addressId);
+  Dictionary<Integer, String> getUnitList();
+  Dictionary<Integer, String> getRecipeList();
+  List<Restaurant> getRestaurantList();
+  List<Address> getAddressList();
+  Address getAddressById(int addressId);
 
 }
