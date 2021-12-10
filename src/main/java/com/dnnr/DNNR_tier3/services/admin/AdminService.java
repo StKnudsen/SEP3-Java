@@ -1,6 +1,6 @@
 package com.dnnr.DNNR_tier3.services.admin;
 import com.dnnr.DNNR_tier3.dataAccess.admin.IAdminDao;
-import com.dnnr.DNNR_tier3.dataAccess.general.IGeneralDao;
+import com.dnnr.DNNR_tier3.dataAccess.dnnr.ISharedDNNRDao;
 import com.dnnr.DNNR_tier3.models.restaurant.Address;
 import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.food.Recipe;
@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminService implements IAdminService
 {
   @Resource IAdminDao adminDao;
-  @Resource IGeneralDao generalDao;
+  @Resource ISharedDNNRDao generalDao;
 
   @Override public boolean addIngredient(String ingredientName,
       int foodgroup)

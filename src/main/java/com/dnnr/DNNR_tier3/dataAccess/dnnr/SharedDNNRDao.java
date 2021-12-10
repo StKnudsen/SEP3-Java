@@ -1,4 +1,4 @@
-package com.dnnr.DNNR_tier3.dataAccess.general;
+package com.dnnr.DNNR_tier3.dataAccess.dnnr;
 
 import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
 import org.springframework.stereotype.Repository;
@@ -11,7 +11,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 @Repository
-public class GeneralDao extends DaoConnection implements IGeneralDao
+public class SharedDNNRDao extends DaoConnection implements ISharedDNNRDao
 {
   @Override public Dictionary<Integer, String> getFoodgroupList()
   {
