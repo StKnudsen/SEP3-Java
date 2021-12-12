@@ -28,13 +28,13 @@ public class Address
         return houseNumber;
     }
 
-    public String getStreetName()
-    {
-        return streetName;
-    }
-
     public int getPostalCode()
     {
         return postalCode;
+    }
+
+    public String getStreetName()
+    {
+        return streetName;
     }
 }
