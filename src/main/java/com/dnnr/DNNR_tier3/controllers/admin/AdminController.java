@@ -52,7 +52,7 @@ public class AdminController implements IAdminController
   }
 
   @GetMapping(value = "/foodgroups")
-  @Override public Dictionary<Integer, String> getFoodgroupList()
+  @Override public Dictionary<Integer, String> getFoodGroupList()
   {
     return adminService.getFoodgroupList();
   }

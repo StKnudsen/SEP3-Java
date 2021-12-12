@@ -6,9 +6,9 @@ import com.dnnr.DNNR_tier3.models.user.User;
 
 public interface IUserController
 {
-//    List<User> getAllUsers();
-    User getUserByUsername(String username);
-    void setUser(RegisteredUser newRegisteredUser);
-    User getGuestUser(int colourId, int animalId);
-    ColourAnimalCount getDatabaseCount();
+  //    List<User> getAllUsers();
+  void setUser(RegisteredUser newRegisteredUser);
+  User getUserByUsername(String username);
+  User getGuestUser(int colourId, int animalId);
+  ColourAnimalCount getDatabaseCount();
 }
