@@ -37,7 +37,7 @@ public class AdminService implements IAdminService
 
   @Override public Dictionary<Integer, String> getFoodgroupList()
   {
-    return  adminDao.getFoodgroupList();
+    return  adminDao.getFoodGroupList();
   }
 
   @Override public Dictionary<Integer, String> getIngredientList()

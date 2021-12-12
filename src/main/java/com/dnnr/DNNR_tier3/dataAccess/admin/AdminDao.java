@@ -27,7 +27,7 @@ import java.util.List;
         }
     }
 
-    @Override public boolean addIngredient(String ingredientName, int foodgroup)
+    @Override public boolean addIngredient(String ingredientName, int foodGroup)
     {
         try (Connection connection = getConnection())
         {
@@ -47,7 +47,7 @@ import java.util.List;
             int ingredientId = resultSet.getInt("id");
 
             //Kalder ny metode til at sætte ingrediensen sammen med dens fødevaregrupper
-            addIngredientsToFoodgroup(ingredientId, foodgroup);
+            addIngredientToFoodGroup(ingredientId, foodGroup);
 
             //giver true hvis det hele virker
             return true;
@@ -77,13 +77,13 @@ import java.util.List;
         }
     }
 
-    public boolean addIngredientsToFoodgroup(int ingredientId, int foodgroup)
+    public boolean addIngredientToFoodGroup(int ingredientId, int foodGroup)
     {
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO foodgroupingredients(foodgroupid, ingredientid) "
-                            + "VALUES(" + foodgroup + "," + ingredientId + ")");
+                            + "VALUES(" + foodGroup + "," + ingredientId + ")");
             return statement.execute();
         }
         catch (SQLException throwables)
@@ -209,13 +209,13 @@ import java.util.List;
         }
     }
 
-    @Override public Dictionary<Integer, String> getFoodgroupList()
+    @Override public Dictionary<Integer, String> getFoodGroupList()
     {
         Dictionary<Integer, String> foodGroupList = new Hashtable<>();
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM foodgroup");
+                    "SELECT * FROM foodgroup ORDER");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
