@@ -24,11 +24,6 @@ public class UserController implements IUserController
         return userService.getAllUsers();
     }*/
 
-    @GetMapping(value = "/user/{username}") public User getUserByUsername(@PathVariable String username)
-    {
-        return userService.getUserByUsername(username);
-    }
-
     @PostMapping(value = "/user") public void setUser(@RequestBody RegisteredUser newRegisteredUser)
     {
         userService.setUser(newRegisteredUser);

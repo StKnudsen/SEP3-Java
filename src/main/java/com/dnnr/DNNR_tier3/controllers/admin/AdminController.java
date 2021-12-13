@@ -68,6 +68,7 @@ public class AdminController implements IAdminController
   {
     return adminService.getRestaurantList();
   }
+
   @GetMapping(value = "/address")
   @Override public List<Address> getAddressListAsync()
   {
