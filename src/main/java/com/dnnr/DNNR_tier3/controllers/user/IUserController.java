@@ -14,7 +14,7 @@ public interface IUserController
   User getUserAsync(String username);
   User getGuestUserAsync(int colourId, int animalId);
   ColourAnimalCount getColourAnimalCountAsync();
-}
+
 
     //  For allergy registration
     //Ilist<> getAllergyFoodGroupList(int userId);

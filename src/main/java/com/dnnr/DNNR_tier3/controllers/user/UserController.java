@@ -15,6 +15,10 @@ public class UserController implements IUserController
     @Resource IUserService userService;
 
     @GetMapping(value = "/user/{username}") public User getUserAsync(@PathVariable String username)
+    {
+        return userService.getUserByUsername(username);
+    }
+
     /*@GetMapping(value = "/user") public List<User> getAllUsers()
     {
         return userService.getAllUsers();
