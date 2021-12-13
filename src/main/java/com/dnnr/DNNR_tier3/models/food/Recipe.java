@@ -6,7 +6,7 @@ import java.util.List;
 public class Recipe
 {
     private String name;
-    private List<RecipeIngredient> recipeIngredient;
+    private List<Ingredient> recipeIngredient;
 
     public Recipe()
     {
@@ -18,7 +18,7 @@ public class Recipe
         return name;
     }
 
-    public List<RecipeIngredient> getRecipeIngredient()
+    public List<Ingredient> getRecipeIngredient()
     {
         return recipeIngredient;
     }

@@ -4,7 +4,7 @@ import com.dnnr.DNNR_tier3.models.CustomPair;
 import com.dnnr.DNNR_tier3.models.restaurant.Address;
 import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.food.Recipe;
-import com.dnnr.DNNR_tier3.models.food.RecipeIngredient;
+import com.dnnr.DNNR_tier3.models.food.Ingredient;
 import com.dnnr.DNNR_tier3.services.admin.IAdminService;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +38,7 @@ public class AdminController implements IAdminController
   @Override public boolean addRecipe(
       @RequestBody Recipe recipe)
   {
-    List<RecipeIngredient> recipeIngredientsList = recipe.getRecipeIngredient();
+    List<Ingredient> recipeIngredientsList = recipe.getRecipeIngredient();
     System.out.println("It me opskrift " + recipe.getName() + " med ingrediensnavn " + recipeIngredientsList.get(0).getIngredientName());
     return adminService.addRecipe(recipe);
   }
