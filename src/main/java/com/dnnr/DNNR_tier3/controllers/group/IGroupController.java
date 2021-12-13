@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IGroupController
 {
-  List<CustomPair> getShuffledRecipes();
-  List<CustomPair> getShuffledRestaurants();
+  List<CustomPair> getShuffledRecipesAsync();
+  List<CustomPair> getShuffledRestaurantsAsync();
 }

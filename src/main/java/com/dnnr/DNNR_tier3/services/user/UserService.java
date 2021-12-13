@@ -42,7 +42,7 @@ import java.util.Dictionary;
 
     return new GuestUser(colour + " " + animal);
   }
-
+  
   /*
    *  Methods for get and set Allergies for users
    */

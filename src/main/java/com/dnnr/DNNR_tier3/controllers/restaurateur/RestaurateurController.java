@@ -19,20 +19,20 @@ public class RestaurateurController implements IRestaurateurController {
 
     @PostMapping(value = "/adddish")
     @Override
-    public boolean addDish(@RequestBody Dish dish) {
+    public boolean addDishAsync(@RequestBody Dish dish) {
         System.out.println("Nåede til RestaurateurController");
          return restaurateurService.addDish(dish);
     }
 
     @GetMapping(value = "/dishes")
     @Override
-    public List<Dish> getDishList(int restaurantId) {
+    public List<Dish> getDishListAsync(int restaurantId) {
         return restaurateurService.getDishList(restaurantId);
     }
 
     @GetMapping(value = "/restaurants/{restaurateurId}")
     @Override
-    public List<Restaurant> getRestaurantsFromRestaurateurId(@PathVariable int restaurateurId) {
+    public List<Restaurant> getRestaurantsFromRestaurateurIdAsync(@PathVariable int restaurateurId) {
         return restaurateurService.getRestaurantsFromRestaurateurId(restaurateurId);
     }
 }

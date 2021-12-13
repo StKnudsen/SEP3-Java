@@ -19,7 +19,7 @@ public class AdminController implements IAdminController
   @Resource IAdminService adminService;
 
   @PostMapping(value = "/addingredients")
-  @Override public boolean addIngredient(
+  @Override public boolean addIngredientAsync(
       @RequestBody CustomPair ingredient)
   {
     System.out.println("It me " + ingredient.getValue());
@@ -29,13 +29,13 @@ public class AdminController implements IAdminController
   }
 
   @PostMapping(value = "/addfoodgroup")
-  @Override public boolean addFoodGroup(@RequestParam String foodGroupName)
+  @Override public boolean addFoodGroupAsync(@RequestParam String foodGroupName)
   {
     return adminService.addFoodGroup(foodGroupName);
   }
 
   @PostMapping(value = "/addrecipe")
-  @Override public boolean addRecipe(
+  @Override public boolean addRecipeAsync(
       @RequestBody Recipe recipe)
   {
     List<Ingredient> recipeIngredientsList = recipe.getRecipeIngredient();
@@ -44,7 +44,7 @@ public class AdminController implements IAdminController
   }
 
   @PostMapping(value = "/addrestaurant")
-  @Override public boolean addRestaurant(@RequestBody Restaurant restaurant)
+  @Override public boolean addRestaurantAsync(@RequestBody Restaurant restaurant)
   {
     System.out.println("AdminController i addRestaurant");
 
@@ -52,30 +52,31 @@ public class AdminController implements IAdminController
   }
 
   @GetMapping(value = "/units")
-  @Override public Dictionary<Integer, String> getUnitList()
+  @Override public Dictionary<Integer, String> getUnitListAsync()
   {
     return adminService.getUnitList();
   }
 
   @GetMapping(value = "/recipes")
-  @Override public Dictionary<Integer, String> getRecipeList()
+  @Override public Dictionary<Integer, String> getRecipeListAsync()
   {
     return adminService.getRecipeList();
   }
 
   @GetMapping(value = "/restaurants")
-  @Override public List<Restaurant> getRestaurantList()
+  @Override public List<Restaurant> getRestaurantListAsync()
   {
     return adminService.getRestaurantList();
   }
+
   @GetMapping(value = "/address")
-  @Override public List<Address> getAddressList()
+  @Override public List<Address> getAddressListAsync()
   {
     return adminService.getAddressList();
   }
 
   @GetMapping(value = "/address/{addressId}")
-  @Override public Address getAddressById(int addressId)
+  @Override public Address getAddressByIdAsync(int addressId)
   {
     return adminService.getAddressById(addressId);
   }

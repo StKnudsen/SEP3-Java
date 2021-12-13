@@ -5,14 +5,15 @@ import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
 import com.dnnr.DNNR_tier3.models.user.User;
 
 import java.util.Dictionary;
+import java.util.List;
 
 public interface IUserController
 {
   //    List<User> getAllUsers();
   void setUser(RegisteredUser newRegisteredUser);
-  User getUserByUsername(String username);
-  User getGuestUser(int colourId, int animalId);
-  ColourAnimalCount getDatabaseCount();
+  User getUserAsync(String username);
+  User getGuestUserAsync(int colourId, int animalId);
+  ColourAnimalCount getColourAnimalCountAsync();
 
   //  For allergy registration
   Dictionary<Integer, String> getAllergyFoodGroupList(int userId);

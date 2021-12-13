@@ -2,12 +2,17 @@ package com.dnnr.DNNR_tier3.models.user;
 
 public abstract class User
 {
-  private final String username;
+  private String username;
   private String role;
 
   public User(String name)
   {
     this.username = name;
+  }
+
+  public User()
+  {
+
   }
 
   public User(String name, String role)

@@ -73,7 +73,7 @@ CREATE TABLE Restaurant
     id          INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     CVR         INT         NOT NULL,
     Name        VARCHAR     NOT NULL,
-    OwnerId       int NOT NULL,
+    OwnerId     int,
     Theme       VARCHAR,
     AddressId   INT,
     PhoneNumber VARCHAR(11) NOT NULL CHECK ( PhoneNumber LIKE '+45%') UNIQUE,
@@ -93,7 +93,7 @@ CREATE TABLE Dish
     id   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Name VARCHAR NOT NULL,
     Description VARCHAR,
-    RestaurantId INT,
+    RestaurantId INT NOT NULL,
     FOREIGN KEY (RestaurantId) REFERENCES Restaurant (id) ON DELETE CASCADE
 );
 
