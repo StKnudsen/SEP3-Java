@@ -4,7 +4,7 @@ import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
 import com.dnnr.DNNR_tier3.models.restaurant.Address;
 import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.food.Recipe;
-import com.dnnr.DNNR_tier3.models.food.RecipeIngredient;
+import com.dnnr.DNNR_tier3.models.food.Ingredient;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -77,7 +77,7 @@ import java.util.List;
         }
     }
 
-    public boolean addIngredientToFoodGroup(int ingredientId, int foodGroup)
+    @Override public boolean addIngredientToFoodGroup(int ingredientId, int foodGroup)
     {
         try (Connection connection = getConnection())
         {
@@ -165,13 +165,13 @@ import java.util.List;
     }
 
     private void addIngredientsToRecipe(int recipeId,
-            List<RecipeIngredient> recipeIngredient)
+            List<Ingredient> recipeIngredient)
     {
         try (Connection connection = getConnection())
         {
-            for (RecipeIngredient ingredient : recipeIngredient)
+            for (Ingredient ingredient : recipeIngredient)
             {
-                RecipeIngredient temp = new RecipeIngredient(
+                Ingredient temp = new Ingredient(
                         ingredient.getIngredientName(), ingredient.getAmount(),
                         ingredient.getUnitId());
 
