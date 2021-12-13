@@ -149,9 +149,10 @@ import java.util.List;
 
             // Tilføjer restaurant med addresseId i databasen
             statement = connection.prepareStatement(
-                    "INSERT INTO Restaurant(cvr, name, theme, addressid, phonenumber) VALUES ('"
+                    "INSERT INTO Restaurant(cvr, name, ownerid, theme, addressid, phonenumber) VALUES ('"
                             + restaurant.getCvr() + "', '"
                             + restaurant.getName() + "', '"
+                            + restaurant.getOwnerId() + "', '"
                             + restaurant.getTheme() + "', '"
                             + addressId + "', '"
                             + restaurant.getPhoneNumber() + "')");
@@ -265,6 +266,7 @@ import java.util.List;
             {
                 Restaurant restaurant = new Restaurant(resultSet.getInt("id"),
                         resultSet.getInt("cvr"), resultSet.getString("name"),
+                        resultSet.getInt("ownerid"),
                         resultSet.getString("theme"),
                         getAddressById(resultSet.getInt("addressId")),
                         resultSet.getString("phonenumber"));

@@ -2,7 +2,7 @@ package com.dnnr.DNNR_tier3.models.restaurant;
 
 public class Restaurant
 {
-    private int id, cvr;
+    private int id, cvr, ownerId;
     private String name, theme, phoneNumber;
     private Address address;
 
@@ -10,13 +10,14 @@ public class Restaurant
     {
     }
 
-    public Restaurant(int id, int cvr, String name, String theme, Address address,
+    public Restaurant(int id, int cvr, String name, int ownerId, String theme, Address address,
             String phoneNumber)
     {
         this.id = id;
         this.cvr = cvr;
         this.address = address;
         this.name = name;
+        this.ownerId = ownerId;
         this.theme = theme;
         this.phoneNumber = phoneNumber;
     }
@@ -49,5 +50,9 @@ public class Restaurant
     public Address getAddress()
     {
         return address;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
     }
 }
