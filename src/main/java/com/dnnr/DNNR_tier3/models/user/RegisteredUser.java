@@ -2,8 +2,13 @@ package com.dnnr.DNNR_tier3.models.user;
 
 public class RegisteredUser extends User
 {
-    private final String password;
+    private String password;
     private int userId;
+
+    public RegisteredUser()
+    {
+
+    }
 
     public RegisteredUser(String username, String password)
     {
