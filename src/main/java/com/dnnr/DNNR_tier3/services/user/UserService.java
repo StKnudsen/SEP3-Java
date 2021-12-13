@@ -39,4 +39,5 @@ import javax.annotation.Resource;
 
     return new GuestUser(colour + " " + animal);
   }
+
 }

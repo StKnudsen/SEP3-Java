@@ -2,9 +2,12 @@ package com.dnnr.DNNR_tier3.dataAccess.authentication;
 
 import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
 import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
+import com.dnnr.DNNR_tier3.models.user.User;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository public class AuthenticationDao extends DaoConnection implements IAuthenticationDao
 {
@@ -46,7 +49,7 @@ import java.sql.*;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Users(username, password) VALUES ('" + registeredUser.getUsername()
+                    "INSERT INTO Users(role, username, password) VALUES ('" + registeredUser.getRole() + "', '" + registeredUser.getUsername()
                             + "', '" + registeredUser.getPassword() + "')");
             return statement.execute();
         }
@@ -131,22 +134,31 @@ import java.sql.*;
         return null;
     }
 
-   /* @Override public List<User> getAllUsers()
+    @Override public List<User> getAllUsers()
     {
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
                     "SELECT * FROM Users");
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            List<User> user = new User(resultSet.getString("Username"),
-                    resultSet.getString("Password"));
-            return user;
+            List<User> users = new ArrayList<>();
+
+            while (resultSet.next())
+            {
+                User user = new RegisteredUser(
+                    resultSet.getInt("id"), resultSet.getString("username"),
+                    resultSet.getString("password"), resultSet.getString("role")
+                );
+
+                users.add(user);
+            }
+
+            return users;
         }
         catch (SQLException throwables)
         {
             throwables.printStackTrace();
         }
         return null;
-    }*/
+    }
 }

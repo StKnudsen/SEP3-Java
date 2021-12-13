@@ -7,6 +7,7 @@ import com.dnnr.DNNR_tier3.services.user.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class UserController implements IUserController
@@ -14,6 +15,12 @@ public class UserController implements IUserController
     @Resource IUserService userService;
 
     @GetMapping(value = "/user/{username}") public User getUserAsync(@PathVariable String username)
+    /*@GetMapping(value = "/user") public List<User> getAllUsers()
+    {
+        return userService.getAllUsers();
+    }*/
+
+    @GetMapping(value = "/user/{username}") public User getUserByUsername(@PathVariable String username)
     {
         return userService.getUserByUsername(username);
     }
