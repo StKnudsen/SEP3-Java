@@ -13,7 +13,7 @@ public class UserController implements IUserController
 {
     @Resource IUserService userService;
 
-    @GetMapping(value = "/user/{username}") public User getUserByUsername(@PathVariable String username)
+    @GetMapping(value = "/user/{username}") public User getUserAsync(@PathVariable String username)
     {
         return userService.getUserByUsername(username);
     }
@@ -23,12 +23,12 @@ public class UserController implements IUserController
         userService.setUser(newRegisteredUser);
     }
 
-    @GetMapping(value = "/user/guestUser") public User getGuestUser(@RequestParam int colourId,@RequestParam int animalId)
+    @GetMapping(value = "/user/guestUser") public User getGuestUserAsync(@RequestParam int colourId,@RequestParam int animalId)
     {
         return userService.createGuestUser(colourId, animalId);
     }
 
-    @GetMapping(value = "/user/guestColoursAnimals") public ColourAnimalCount getDatabaseCount()
+    @GetMapping(value = "/user/guestColoursAnimals") public ColourAnimalCount getColourAnimalCountAsync()
     {
         return userService.getDatabaseCount();
     }

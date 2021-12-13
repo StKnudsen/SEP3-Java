@@ -93,7 +93,7 @@ CREATE TABLE Dish
     id   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Name VARCHAR NOT NULL,
     Description VARCHAR,
-    RestaurantId INT,
+    RestaurantId INT NOT NULL,
     FOREIGN KEY (RestaurantId) REFERENCES Restaurant (id) ON DELETE CASCADE
 );
 

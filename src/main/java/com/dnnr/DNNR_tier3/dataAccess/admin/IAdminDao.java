@@ -13,7 +13,6 @@ public interface IAdminDao
   boolean addIngredientToFoodGroup(int ingredientId, int foodGroup);
   boolean addFoodGroup(String foodGroupName);
 
-    boolean addIngredientsToFoodgroup(int ingredientId, int foodgroup);
     boolean addRecipe(Recipe recipe);
     boolean addRestaurant(Restaurant restaurant);
     Dictionary<Integer, String> getUnitList();

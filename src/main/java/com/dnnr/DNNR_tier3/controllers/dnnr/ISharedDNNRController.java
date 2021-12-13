@@ -8,6 +8,6 @@ public interface ISharedDNNRController
    *  Used by both admins and registered users
    */
 
-  Dictionary<Integer, String> getFoodGroupList();
-  Dictionary<Integer, String> getIngredientList();
+  Dictionary<Integer, String> getFoodGroupListAsync();
+  Dictionary<Integer, String> getIngredientListAsync();
 }

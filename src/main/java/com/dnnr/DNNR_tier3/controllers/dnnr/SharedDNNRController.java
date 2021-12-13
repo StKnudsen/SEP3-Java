@@ -14,13 +14,13 @@ public class SharedDNNRController implements ISharedDNNRController
   @Resource ISharedDNNRService sharedDNNRService;
 
   @GetMapping(value = "/foodgroups")
-  @Override public Dictionary<Integer, String> getFoodGroupList()
+  @Override public Dictionary<Integer, String> getFoodGroupListAsync()
   {
     return sharedDNNRService.getFoodGroupList();
   }
 
   @GetMapping(value = "/ingredients")
-  @Override public Dictionary<Integer, String> getIngredientList()
+  @Override public Dictionary<Integer, String> getIngredientListAsync()
   {
     return sharedDNNRService.getIngredientList();
   }

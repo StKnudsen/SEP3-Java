@@ -13,12 +13,12 @@ public class GroupController implements IGroupController
 {
   @Resource IGroupService groupService;
 
-  @GetMapping(value = "/group/recipes") public List<CustomPair> getShuffledRecipes()
+  @GetMapping(value = "/group/recipes") public List<CustomPair> getShuffledRecipesAsync()
   {
     return groupService.getShuffledRecipes();
   }
 
-  @GetMapping(value = "/group/restaurants") public List<CustomPair> getShuffledRestaurants()
+  @GetMapping(value = "/group/restaurants") public List<CustomPair> getShuffledRestaurantsAsync()
   {
     return groupService.getShuffledRestaurants();
   }

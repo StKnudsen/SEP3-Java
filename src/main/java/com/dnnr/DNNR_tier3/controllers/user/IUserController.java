@@ -8,7 +8,7 @@ public interface IUserController
 {
   //    List<User> getAllUsers();
   void setUser(RegisteredUser newRegisteredUser);
-  User getUserByUsername(String username);
-  User getGuestUser(int colourId, int animalId);
-  ColourAnimalCount getDatabaseCount();
+  User getUserAsync(String username);
+  User getGuestUserAsync(int colourId, int animalId);
+  ColourAnimalCount getColourAnimalCountAsync();
 }

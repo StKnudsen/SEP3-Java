@@ -77,7 +77,7 @@ import java.util.List;
         }
     }
 
-    public boolean addIngredientToFoodGroup(int ingredientId, int foodGroup)
+    @Override public boolean addIngredientToFoodGroup(int ingredientId, int foodGroup)
     {
         try (Connection connection = getConnection())
         {
