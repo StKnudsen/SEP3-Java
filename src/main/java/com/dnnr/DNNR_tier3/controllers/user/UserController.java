@@ -7,6 +7,7 @@ import com.dnnr.DNNR_tier3.services.user.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Dictionary;
 
 @RestController
 public class UserController implements IUserController
@@ -31,5 +32,32 @@ public class UserController implements IUserController
     @GetMapping(value = "/user/guestColoursAnimals") public ColourAnimalCount getDatabaseCount()
     {
         return userService.getDatabaseCount();
+    }
+
+    /*
+     *  Methods for get and set Allergies for users
+     */
+    @GetMapping(value = "/allergy/{userId}/foodgroup")
+    public Dictionary<Integer, String> getAllergyFoodGroupList(@PathVariable int userId)
+    {
+        return userService.getAllergyFoodGroupList(userId);
+    }
+
+    @GetMapping(value = "/allergy/{userId}/ingredient")
+    public Dictionary<Integer, String> getAllergyIngredientList(@PathVariable int userId)
+    {
+        return userService.getAllergyIngredientList(userId);
+    }
+
+    @PostMapping(value = "/allergy/{userId}/foodgroup")
+    @Override public boolean SetUserAllergyFoodGroup(@PathVariable int userId, @RequestParam int id)
+    {
+        return userService.SetUserAllergyFoodGroup(userId, id);
+    }
+
+    @PostMapping(value = "/allergy/{userId}/ingredient")
+    @Override public boolean SetUserAllergyIngredient(@PathVariable int userId, @RequestParam int id)
+    {
+        return userService.SetUserAllergyIngredient(userId, id);
     }
 }

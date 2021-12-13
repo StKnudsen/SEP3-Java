@@ -571,3 +571,11 @@ INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber, ownerid)
 VALUES (15, 'McDonalds', 'FastFood', 3, '+4512345678',4),
        (94, 'Noma', 'Nordisk mad', 4, '+4587654321',4),
        (86, 'McNuggets', 'Kyllingebidder', 3, '+4570121416', 4);
+
+
+
+SELECT * FROM foodgroupallergy
+    JOIN foodgroup f on foodgroupallergy.foodgroupid = f.id WHERE userid = 1;
+
+SELECT * FROM ingredientallergy
+    JOIN ingredient i on ingredientallergy.ingredientid = i.id WHERE userid = 2;
