@@ -1,12 +1,12 @@
 package com.dnnr.DNNR_tier3.models.food;
 
-public class RecipeIngredient
+public class Ingredient
 {
     private String ingredientName;
     private int amount;
     private int unitId;
 
-    public RecipeIngredient(String ingredientName, int amount, int unitId)
+    public Ingredient(String ingredientName, int amount, int unitId)
     {
         this.ingredientName = ingredientName;
         this.amount = amount;

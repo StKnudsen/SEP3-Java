@@ -4,7 +4,7 @@ import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
 import com.dnnr.DNNR_tier3.models.restaurant.Address;
 import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.food.Recipe;
-import com.dnnr.DNNR_tier3.models.food.RecipeIngredient;
+import com.dnnr.DNNR_tier3.models.food.Ingredient;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -27,7 +27,7 @@ import java.util.List;
         }
     }
 
-    @Override public boolean addIngredient(String ingredientName, int foodgroup)
+    @Override public boolean addIngredient(String ingredientName, int foodGroup)
     {
         try (Connection connection = getConnection())
         {
@@ -47,7 +47,7 @@ import java.util.List;
             int ingredientId = resultSet.getInt("id");
 
             //Kalder ny metode til at sætte ingrediensen sammen med dens fødevaregrupper
-            addIngredientsToFoodgroup(ingredientId, foodgroup);
+            addIngredientToFoodGroup(ingredientId, foodGroup);
 
             //giver true hvis det hele virker
             return true;
@@ -77,13 +77,13 @@ import java.util.List;
         }
     }
 
-    public boolean addIngredientsToFoodgroup(int ingredientId, int foodgroup)
+    @Override public boolean addIngredientToFoodGroup(int ingredientId, int foodGroup)
     {
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO foodgroupingredients(foodgroupid, ingredientid) "
-                            + "VALUES(" + foodgroup + "," + ingredientId + ")");
+                            + "VALUES(" + foodGroup + "," + ingredientId + ")");
             return statement.execute();
         }
         catch (SQLException throwables)
@@ -165,13 +165,13 @@ import java.util.List;
     }
 
     private void addIngredientsToRecipe(int recipeId,
-            List<RecipeIngredient> recipeIngredient)
+            List<Ingredient> recipeIngredient)
     {
         try (Connection connection = getConnection())
         {
-            for (RecipeIngredient ingredient : recipeIngredient)
+            for (Ingredient ingredient : recipeIngredient)
             {
-                RecipeIngredient temp = new RecipeIngredient(
+                Ingredient temp = new Ingredient(
                         ingredient.getIngredientName(), ingredient.getAmount(),
                         ingredient.getUnitId());
 
@@ -207,50 +207,6 @@ import java.util.List;
 
             throwables.printStackTrace();
         }
-    }
-
-    @Override public Dictionary<Integer, String> getFoodgroupList()
-    {
-        Dictionary<Integer, String> foodGroupList = new Hashtable<>();
-        try (Connection connection = getConnection())
-        {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM foodgroup");
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next())
-            {
-                foodGroupList.put(resultSet.getInt("id"),
-                        resultSet.getString("name").toLowerCase());
-            }
-            return foodGroupList;
-        }
-        catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override public Dictionary<Integer, String> getIngredientList()
-    {
-        Dictionary<Integer, String> ingredientList = new Hashtable<>();
-        try (Connection connection = getConnection())
-        {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM ingredient ORDER BY name");
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next())
-            {
-                ingredientList.put(resultSet.getInt("id"),
-                        resultSet.getString("name").toLowerCase());
-            }
-            return ingredientList;
-        }
-        catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-        }
-        return null;
     }
 
     @Override public Dictionary<Integer, String> getUnitList()
@@ -329,7 +285,8 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM address");
+                    "SELECT * FROM address " +
+                            "JOIN city c ON c.postalcode = address.postalcode");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -337,7 +294,8 @@ import java.util.List;
                         resultSet.getInt("id"),
                         resultSet.getInt("housenumber"),
                         resultSet.getString("streetname"),
-                        resultSet.getInt("postalcode")
+                        resultSet.getInt("postalcode"),
+                        resultSet.getString("cityName")
                 );
                 addressList.add(address);
             }
@@ -363,7 +321,8 @@ import java.util.List;
                 return new Address(resultSet.getInt("id"),
                         resultSet.getInt("housenumber"),
                         resultSet.getString("streetname"),
-                        resultSet.getInt("postalcode"));
+                        resultSet.getInt("postalcode"),
+                        resultSet.getString("cityName"));
             }
         }
         catch (SQLException throwables)

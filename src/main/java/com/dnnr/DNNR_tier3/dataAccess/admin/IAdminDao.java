@@ -9,16 +9,15 @@ import java.util.List;
 
 public interface IAdminDao
 {
-    boolean addIngredient(String ingredientName, int foodgroup);
+  boolean addIngredient(String ingredientName, int foodGroup);
+  boolean addIngredientToFoodGroup(int ingredientId, int foodGroup);
   boolean addFoodGroup(String foodGroupName);
-    boolean addIngredientsToFoodgroup(int ingredientId, int foodgroup);
-    boolean addRecipe(Recipe recipe);
-    boolean addRestaurant(Restaurant restaurant);
-    Dictionary<Integer, String> getFoodgroupList();
-    Dictionary<Integer, String> getIngredientList();
-    Dictionary<Integer, String> getUnitList();
-    Dictionary<Integer, String> getRecipeList();
-    List<Restaurant> getRestaurantList();
-    List<Address> getAddressList();
-    Address getAddressById(int addressId);
+  boolean addRecipe(Recipe recipe);
+  boolean addRestaurant(Restaurant restaurant);
+  Dictionary<Integer, String> getUnitList();
+  Dictionary<Integer, String> getRecipeList();
+  List<Restaurant> getRestaurantList();
+  List<Address> getAddressList();
+  Address getAddressById(int addressId);
+
 }

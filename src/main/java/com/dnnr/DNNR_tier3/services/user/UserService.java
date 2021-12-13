@@ -8,16 +8,10 @@ import com.dnnr.DNNR_tier3.models.user.User;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Component public class UserService implements IUserService
 {
-  @Resource IDao dao;
-
-    @Override public List<User> getAllUsers()
-    {
-        return dao.getAllUsers();
-    }
+  @Resource IAuthenticationDao authenticationDao;
 
   @Override public RegisteredUser getUserByUsername(String username)
   {
