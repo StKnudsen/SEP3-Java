@@ -329,7 +329,8 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM address");
+                    "SELECT * FROM address " +
+                            "JOIN city c ON c.postalcode = address.postalcode");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -337,7 +338,8 @@ import java.util.List;
                         resultSet.getInt("id"),
                         resultSet.getInt("housenumber"),
                         resultSet.getString("streetname"),
-                        resultSet.getInt("postalcode")
+                        resultSet.getInt("postalcode"),
+                        resultSet.getString("cityName")
                 );
                 addressList.add(address);
             }
@@ -363,7 +365,8 @@ import java.util.List;
                 return new Address(resultSet.getInt("id"),
                         resultSet.getInt("housenumber"),
                         resultSet.getString("streetname"),
-                        resultSet.getInt("postalcode"));
+                        resultSet.getInt("postalcode"),
+                        resultSet.getString("cityName"));
             }
         }
         catch (SQLException throwables)

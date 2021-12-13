@@ -13,6 +13,7 @@ public class Restaurant
     public Restaurant(int id, int cvr, String name, String theme, Address address,
             String phoneNumber)
     {
+        this.id = id;
         this.cvr = cvr;
         this.address = address;
         this.name = name;
