@@ -16,8 +16,9 @@ public interface IAdminDao
   boolean addRestaurant(Restaurant restaurant);
   Dictionary<Integer, String> getUnitList();
   Dictionary<Integer, String> getRecipeList();
+  Dictionary<Integer, String> getUsersAndRestaurateurListAsync();
   List<Restaurant> getRestaurantList();
   List<Address> getAddressList();
-  Address getAddressById(int addressId);
 
+  Address getAddressById(int addressId);
 }
