@@ -12,13 +12,14 @@ public interface IAdminDao
   boolean addIngredient(String ingredientName, int foodGroup);
   boolean addIngredientToFoodGroup(int ingredientId, int foodGroup);
   boolean addFoodGroup(String foodGroupName);
-  boolean addRecipe(Recipe recipe);
-  boolean addRestaurant(Restaurant restaurant);
-  Dictionary<Integer, String> getFoodGroupList();
-  Dictionary<Integer, String> getIngredientList();
-  Dictionary<Integer, String> getUnitList();
-  Dictionary<Integer, String> getRecipeList();
-  List<Restaurant> getRestaurantList();
-  List<Address> getAddressList();
-  Address getAddressById(int addressId);
+
+    boolean addIngredientsToFoodgroup(int ingredientId, int foodgroup);
+    boolean addRecipe(Recipe recipe);
+    boolean addRestaurant(Restaurant restaurant);
+    Dictionary<Integer, String> getUnitList();
+    Dictionary<Integer, String> getRecipeList();
+    List<Restaurant> getRestaurantList();
+    List<Address> getAddressList();
+    Address getAddressById(int addressId);
+
 }

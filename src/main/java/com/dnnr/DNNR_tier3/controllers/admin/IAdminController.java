@@ -15,8 +15,6 @@ public interface IAdminController
   boolean addRecipe(Recipe recipe);
   boolean addRestaurant(Restaurant restaurant);
 
-  Dictionary<Integer, String> getFoodGroupList();
-  Dictionary<Integer, String> getIngredientList();
   Dictionary<Integer, String> getUnitList();
   Dictionary<Integer, String> getRecipeList();
   List<Restaurant> getRestaurantList();

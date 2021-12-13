@@ -209,50 +209,6 @@ import java.util.List;
         }
     }
 
-    @Override public Dictionary<Integer, String> getFoodGroupList()
-    {
-        Dictionary<Integer, String> foodGroupList = new Hashtable<>();
-        try (Connection connection = getConnection())
-        {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM foodgroup ORDER");
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next())
-            {
-                foodGroupList.put(resultSet.getInt("id"),
-                        resultSet.getString("name").toLowerCase());
-            }
-            return foodGroupList;
-        }
-        catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override public Dictionary<Integer, String> getIngredientList()
-    {
-        Dictionary<Integer, String> ingredientList = new Hashtable<>();
-        try (Connection connection = getConnection())
-        {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM ingredient ORDER BY name");
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next())
-            {
-                ingredientList.put(resultSet.getInt("id"),
-                        resultSet.getString("name").toLowerCase());
-            }
-            return ingredientList;
-        }
-        catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-        }
-        return null;
-    }
-
     @Override public Dictionary<Integer, String> getUnitList()
     {
         Dictionary<Integer, String> unitList = new Hashtable<>();

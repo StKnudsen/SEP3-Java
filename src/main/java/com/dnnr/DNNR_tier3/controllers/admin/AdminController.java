@@ -51,18 +51,6 @@ public class AdminController implements IAdminController
     return adminService.addRestaurant(restaurant);
   }
 
-  @GetMapping(value = "/foodgroups")
-  @Override public Dictionary<Integer, String> getFoodGroupList()
-  {
-    return adminService.getFoodgroupList();
-  }
-
-  @GetMapping(value = "/ingredients")
-  @Override public Dictionary<Integer, String> getIngredientList()
-  {
-    return adminService.getIngredientList();
-  }
-
   @GetMapping(value = "/units")
   @Override public Dictionary<Integer, String> getUnitList()
   {

@@ -1,13 +1,14 @@
-package com.dnnr.DNNR_tier3.dataAccess;
+package com.dnnr.DNNR_tier3.dataAccess.authentication;
 
+import com.dnnr.DNNR_tier3.dataAccess.DaoConnection;
 import com.dnnr.DNNR_tier3.models.user.RegisteredUser;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
-@Repository public class Dao extends DaoConnection implements IDao
+@Repository public class AuthenticationDao extends DaoConnection implements IAuthenticationDao
 {
-    public Dao()
+    public AuthenticationDao()
     {
         try
         {

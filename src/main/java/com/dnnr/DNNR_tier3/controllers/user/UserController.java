@@ -13,11 +13,6 @@ public class UserController implements IUserController
 {
     @Resource IUserService userService;
 
-    /*@GetMapping(value = "/user") public List<User> getAllUsers()
-    {
-        return userService.getAllUsers();
-    }*/
-
     @GetMapping(value = "/user/{username}") public User getUserByUsername(@PathVariable String username)
     {
         return userService.getUserByUsername(username);
