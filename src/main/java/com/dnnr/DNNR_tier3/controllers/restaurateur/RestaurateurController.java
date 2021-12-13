@@ -5,10 +5,7 @@ import com.dnnr.DNNR_tier3.models.restaurant.Dish;
 import com.dnnr.DNNR_tier3.models.restaurant.Restaurant;
 import com.dnnr.DNNR_tier3.models.user.User;
 import com.dnnr.DNNR_tier3.services.restaurateur.IRestaurateurService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -22,15 +19,9 @@ public class RestaurateurController implements IRestaurateurController {
 
     @PostMapping(value = "/adddish")
     @Override
-    public boolean addDish(CustomPair dish) {
+    public boolean addDish(@RequestBody Dish dish) {
         System.out.println("Nåede til RestaurateurController");
-        int restaurantId = dish.getKey();
-        String DishNameAndDescription = dish.getValue();
-        String[] seperate = DishNameAndDescription.split(";",2);
-        String DishName = seperate[0];
-        String DishDescription = seperate[1];
-        Dish newDish = new Dish(DishName,DishDescription,restaurantId);
-         return restaurateurService.addDish(newDish);
+         return restaurateurService.addDish(dish);
     }
 
     @GetMapping(value = "/dishes")

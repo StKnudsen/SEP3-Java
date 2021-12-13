@@ -29,10 +29,10 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
 
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO Dish (Name, Description, RestaurantId) VALUES ('"
-                            + dish.getName() + ","
-                            + dish.getDescription() + ","
+                            + dish.getName() + "', '"
+                            + dish.getDescription() + "', "
                             + dish.getRestaurantId()
-                            + "')");
+                            + ")");
             statement.execute();
             return true;
         } catch (SQLException e) {

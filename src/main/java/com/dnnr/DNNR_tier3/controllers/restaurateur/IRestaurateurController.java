@@ -8,7 +8,7 @@ import com.dnnr.DNNR_tier3.models.user.User;
 import java.util.List;
 
 public interface IRestaurateurController {
-    boolean addDish(CustomPair dish);
+    boolean addDish(Dish dish);
     List<Dish> getDishList(int restaurantId);
     List<Restaurant> getRestaurantsFromRestaurateurId(int restaurateurId);
 }
