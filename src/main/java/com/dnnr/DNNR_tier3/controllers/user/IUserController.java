@@ -15,8 +15,9 @@ public interface IUserController
   User getGuestUserAsync(int colourId, int animalId);
   ColourAnimalCount getColourAnimalCountAsync();
 
-
-    //  For allergy registration
-    //Ilist<> getAllergyFoodGroupList(int userId);
-    //Dictionary<Integer, String> getAllergyIngredientList(int userId);
+  //  For allergy registration
+  Dictionary<Integer, String> getAllergyFoodGroupList(int userId);
+  Dictionary<Integer, String> getAllergyIngredientList(int userId);
+  boolean SetUserAllergyFoodGroup(int userId, int foodGroupId);
+  boolean SetUserAllergyIngredient(int userId, int ingredient);
 }
