@@ -6,18 +6,19 @@ public class Restaurant
     private String name, theme, phoneNumber;
     private Address address;
 
+    public Restaurant()
+    {
+    }
+
     public Restaurant(int id, int cvr, String name, String theme, Address address,
             String phoneNumber)
     {
+        this.id = id;
         this.cvr = cvr;
         this.address = address;
         this.name = name;
         this.theme = theme;
         this.phoneNumber = phoneNumber;
-    }
-
-    public Restaurant()
-    {
     }
 
     public int getId()
@@ -28,11 +29,6 @@ public class Restaurant
     public int getCvr()
     {
         return cvr;
-    }
-
-    public Address getAddress()
-    {
-        return address;
     }
 
     public String getName()
@@ -48,5 +44,10 @@ public class Restaurant
     public String getPhoneNumber()
     {
         return phoneNumber;
+    }
+
+    public Address getAddress()
+    {
+        return address;
     }
 }
