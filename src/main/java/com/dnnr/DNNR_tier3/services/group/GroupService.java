@@ -14,9 +14,9 @@ public class GroupService implements IGroupService
 
 
 
-  @Override public List<CustomPair> getShuffledRecipes()
+  @Override public List<CustomPair> getShuffledRecipes(List<String> allergies)
   {
-    return Dao.getShuffledRecipes();
+    return Dao.getShuffledRecipes(allergies.get(0), allergies.get(1));
   }
 
   @Override public List<CustomPair> getShuffledRestaurants()

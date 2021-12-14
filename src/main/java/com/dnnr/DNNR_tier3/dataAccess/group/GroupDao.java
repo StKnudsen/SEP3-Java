@@ -11,26 +11,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class GroupDao extends DaoConnection implements IGroupDao
+@Repository public class GroupDao extends DaoConnection implements IGroupDao
 {
-  @Override public List<CustomPair> getShuffledRecipes()
+  @Override public List<CustomPair> getShuffledRecipes(String ingredients,
+      String foodGroups)
   {
     List<CustomPair> recipes = new ArrayList<>();
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM recipe ORDER BY RANDOM() LIMIT ("
-              + "SELECT COUNT(*) FROM recipe"
-              + ")"
-      );
+          "SELECT * FROM recipe WHERE id not in "
+              + " (SELECT id FROM recipe JOIN recipeingredients r on recipe.id = r.recipeid"
+              + "WHERE ingredientid in (" + ingredients + "))"
+              + "AND id not in (SELECT id FROM recipe "
+              + "JOIN recipeingredients r on recipe.id = r.recipeid"
+              + "JOIN foodgroupingredients f on r.ingredientid = f.ingredientid"
+              + "WHERE foodgroupid in(" + foodGroups + "))"
+              + "ORDER BY RANDOM(), id, name LIMIT (250 )");
       ResultSet resultSet = statement.executeQuery();
 
       while (resultSet.next())
       {
-        CustomPair pair = new CustomPair(
-            resultSet.getInt("id"), resultSet.getString("Name")
-        );
+        CustomPair pair = new CustomPair(resultSet.getInt("id"),
+            resultSet.getString("Name"));
         recipes.add(pair);
       }
     }
@@ -48,16 +51,13 @@ public class GroupDao extends DaoConnection implements IGroupDao
     {
       PreparedStatement statement = connection.prepareStatement(
           "SELECT * FROM Restaurant ORDER BY RANDOM() LIMIT ("
-              + "SELECT COUNT(*) FROM Restaurant"
-              + ")"
-      );
+              + "SELECT COUNT(*) FROM Restaurant" + ")");
       ResultSet resultSet = statement.executeQuery();
 
       while (resultSet.next())
       {
-        CustomPair pair = new CustomPair(
-            resultSet.getInt("id"), resultSet.getString("Name")
-        );
+        CustomPair pair = new CustomPair(resultSet.getInt("id"),
+            resultSet.getString("Name"));
         restaurants.add(pair);
       }
     }
