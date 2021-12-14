@@ -85,6 +85,7 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
                                 resultSet.getInt("id"),
                                 resultSet.getInt("cvr"),
                                 resultSet.getString("name"),
+                                resultSet.getInt("ownerid"),
                                 resultSet.getString("theme"),
                                 new Address(
                                         resultSet.getInt("addressid"),
