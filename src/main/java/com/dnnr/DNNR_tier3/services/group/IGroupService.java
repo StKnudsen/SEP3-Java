@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IGroupService
 {
-  List<CustomPair> getShuffledRecipes();
+  List<CustomPair> getShuffledRecipes(List<String> allergies);
   List<CustomPair> getShuffledRestaurants();
 }

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IGroupDao
 {
-  List<CustomPair> getShuffledRecipes();
+  List<CustomPair> getShuffledRecipes(String ingredients, String foodGroups);
   List<CustomPair> getShuffledRestaurants();
 }
