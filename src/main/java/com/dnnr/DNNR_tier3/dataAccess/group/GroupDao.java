@@ -21,13 +21,14 @@ import java.util.List;
     {
       PreparedStatement statement = connection.prepareStatement(
           "SELECT * FROM recipe WHERE id not in "
-              + " (SELECT id FROM recipe JOIN recipeingredients r on recipe.id = r.recipeid"
-              + "WHERE ingredientid in (" + ingredients + "))"
+              + "(SELECT id FROM recipe JOIN recipeingredients r on recipe.id = r.recipeid "
+              + "WHERE ingredientid in ("+ ingredients +")) "
               + "AND id not in (SELECT id FROM recipe "
-              + "JOIN recipeingredients r on recipe.id = r.recipeid"
-              + "JOIN foodgroupingredients f on r.ingredientid = f.ingredientid"
-              + "WHERE foodgroupid in(" + foodGroups + "))"
-              + "ORDER BY RANDOM(), id, name LIMIT (250 )");
+              + "JOIN recipeingredients r on recipe.id = r.recipeid "
+              + "JOIN foodgroupingredients f on r.ingredientid = f.ingredientid "
+              + "WHERE foodgroupid in("+ foodGroups +")) "
+              + "ORDER BY RANDOM(), id, name LIMIT (250)"
+          );
       ResultSet resultSet = statement.executeQuery();
 
       while (resultSet.next())
