@@ -254,6 +254,28 @@ import java.util.List;
         return null;
     }
 
+    @Override
+    public Dictionary<Integer, String> getUsersAndRestaurateurListAsync() {
+        Dictionary<Integer, String> userList = new Hashtable<>();
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM users WHERE role = 'Restaurateur' or role = 'User'");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+            {
+                userList.put(resultSet.getInt("id"),
+                        resultSet.getString("username").toLowerCase());
+            }
+            return userList;
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
     @Override public List<Restaurant> getRestaurantList()
     {
         try (Connection connection = getConnection())

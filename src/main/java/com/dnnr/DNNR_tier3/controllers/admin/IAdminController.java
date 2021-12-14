@@ -17,6 +17,7 @@ public interface IAdminController
 
   Dictionary<Integer, String> getUnitListAsync();
   Dictionary<Integer, String> getRecipeListAsync();
+  Dictionary<Integer, String> getUsersAndRestaurateurListAsync();
   List<Restaurant> getRestaurantListAsync();
   List<Address> getAddressListAsync();
   Address getAddressByIdAsync(int addressId);

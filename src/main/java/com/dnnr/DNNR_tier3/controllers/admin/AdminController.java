@@ -63,6 +63,11 @@ public class AdminController implements IAdminController
     return adminService.getRecipeList();
   }
 
+  @GetMapping(value = "/userlist")
+  @Override public Dictionary<Integer, String> getUsersAndRestaurateurListAsync() {
+    return adminService.getUsersAndRestaurateurListAsync();
+  }
+
   @GetMapping(value = "/restaurants")
   @Override public List<Restaurant> getRestaurantListAsync()
   {

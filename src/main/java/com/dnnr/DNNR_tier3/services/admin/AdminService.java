@@ -47,6 +47,10 @@ public class AdminService implements IAdminService
     return adminDao.getRecipeList();
   }
 
+  @Override public Dictionary<Integer, String> getUsersAndRestaurateurListAsync() {
+    return adminDao.getUsersAndRestaurateurListAsync();
+  }
+
   @Override public List<Restaurant> getRestaurantList()
   {
     return adminDao.getRestaurantList();
