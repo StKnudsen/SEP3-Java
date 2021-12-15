@@ -13,7 +13,7 @@ import java.util.Hashtable;
 @Repository
 public class SharedDNNRDao extends DaoConnection implements ISharedDNNRDao
 {
-  @Override public Dictionary<Integer, String> getFoodgroupList()
+  @Override public Dictionary<Integer, String> getFoodGroupList()
   {
     Dictionary<Integer, String> foodGroupList = new Hashtable<>();
     try (Connection connection = getConnection())

@@ -13,6 +13,8 @@ import java.util.List;
 
 @Repository public class GroupDao extends DaoConnection implements IGroupDao
 {
+
+
   @Override public List<CustomPair> getShuffledRecipes(String ingredients,
       String foodGroups)
   {

@@ -13,7 +13,7 @@ public class SharedDNNRService implements ISharedDNNRService
 
   @Override public Dictionary<Integer, String> getFoodGroupList()
   {
-    return generalDao.getFoodgroupList();
+    return generalDao.getFoodGroupList();
   }
 
   @Override public Dictionary<Integer, String> getIngredientList()

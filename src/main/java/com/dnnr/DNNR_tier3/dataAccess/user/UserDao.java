@@ -10,6 +10,7 @@ import java.util.Hashtable;
 @Repository
 public class UserDao extends DaoConnection implements IUserDao
 {
+  /*
   public UserDao()
   {
     try
@@ -20,7 +21,7 @@ public class UserDao extends DaoConnection implements IUserDao
     {
       e.printStackTrace();
     }
-  }
+  }*/
 
   @Override public Dictionary<Integer, String> getAllergyFoodGroupList(int userId)
   {

@@ -14,12 +14,12 @@ import java.util.List;
 public class AdminService implements IAdminService
 {
   @Resource IAdminDao adminDao;
-  @Resource ISharedDNNRDao generalDao;
+  //@Resource ISharedDNNRDao generalDao;
 
   @Override public boolean addIngredient(String ingredientName,
-      int foodgroup)
+      int foodGroup)
   {
-   return  adminDao.addIngredient(ingredientName, foodgroup);
+   return  adminDao.addIngredient(ingredientName, foodGroup);
   }
 
   @Override public boolean addFoodGroup(String foodGroupName)

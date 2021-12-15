@@ -13,20 +13,18 @@ import java.util.List;
 @Repository
 public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
 
+    /*
     public RestaurateurDao() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public boolean addDish(Dish dish) {
         try (Connection connection = getConnection()) {
-            System.out.println("Nåede til RestaurateurDao");
-
-
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO Dish (Name, Description, RestaurantId) VALUES ('"
                             + dish.getName() + "', '"
@@ -36,7 +34,6 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
             statement.execute();
             return true;
         } catch (SQLException e) {
-            System.out.println("AddDish catch-clause græder");
             e.printStackTrace();
         }
         return false;
@@ -61,8 +58,6 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
             }
             return dishes;
         } catch (SQLException throwables) {
-            System.out.println("getDishList i catch-clause DAO græder");
-
             throwables.printStackTrace();
         }
         return null;

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Repository public class AdminDao extends DaoConnection implements IAdminDao
 {
-    public AdminDao()
+    /*public AdminDao()
     {
         try
         {
@@ -25,7 +25,7 @@ import java.util.List;
         {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override public boolean addIngredient(String ingredientName, int foodGroup)
     {

@@ -7,6 +7,6 @@ public interface ISharedDNNRDao
   /*
    *  Used by both admins and registered users
    */
-  Dictionary<Integer, String> getFoodgroupList();
+  Dictionary<Integer, String> getFoodGroupList();
   Dictionary<Integer, String> getIngredientList();
 }

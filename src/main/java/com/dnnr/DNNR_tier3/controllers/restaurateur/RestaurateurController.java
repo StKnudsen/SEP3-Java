@@ -20,7 +20,6 @@ public class RestaurateurController implements IRestaurateurController {
     @PostMapping(value = "/adddish")
     @Override
     public boolean addDishAsync(@RequestBody Dish dish) {
-        System.out.println("Nåede til RestaurateurController");
          return restaurateurService.addDish(dish);
     }
 

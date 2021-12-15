@@ -9,7 +9,7 @@ public interface IAuthenticationDao
 {
   RegisteredUser getUserByUsername(String username);
   Boolean setUser(RegisteredUser registeredUser);
-  List<User> getAllUsers();
+  //List<User> getAllUsers();
   int getAnimalCount();
   int getColourCount();
   String getAnimal(int id);

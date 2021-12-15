@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository public class AuthenticationDao extends DaoConnection implements IAuthenticationDao
 {
-    public AuthenticationDao()
+    /*public AuthenticationDao()
     {
         try
         {
@@ -21,7 +21,7 @@ import java.util.List;
         {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override public RegisteredUser getUserByUsername(String username)
     {
@@ -134,7 +134,7 @@ import java.util.List;
         return null;
     }
 
-    @Override public List<User> getAllUsers()
+    /*@Override public List<User> getAllUsers()
     {
         try (Connection connection = getConnection())
         {
@@ -160,5 +160,5 @@ import java.util.List;
             throwables.printStackTrace();
         }
         return null;
-    }
+    }*/
 }
