@@ -4,9 +4,9 @@ public class Dish {
     private String name, description;
     private int id, restaurantId;
 
-    public Dish() {}
+    public Dish() { }
 
-    public Dish(String name, String description, int id,int restaurantId) {
+    public Dish(String name, String description, int id, int restaurantId) {
         this.name = name;
         this.description = description;
         this.id = id;

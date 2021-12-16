@@ -5,14 +5,11 @@ public abstract class User
   private String username;
   private String role;
 
+  public User() { }
+
   public User(String name)
   {
     this.username = name;
-  }
-
-  public User()
-  {
-
   }
 
   public User(String name, String role)

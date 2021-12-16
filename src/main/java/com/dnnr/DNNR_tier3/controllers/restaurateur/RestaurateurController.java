@@ -11,27 +11,27 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-public class RestaurateurController implements IRestaurateurController {
+@RestController public class RestaurateurController
+    implements IRestaurateurController
+{
 
-    @Resource
-    IRestaurateurService restaurateurService;
+  @Resource IRestaurateurService restaurateurService;
 
-    @PostMapping(value = "/adddish")
-    @Override
-    public boolean addDishAsync(@RequestBody Dish dish) {
-         return restaurateurService.addDish(dish);
-    }
+  @PostMapping(value = "/adddish") @Override public boolean addDishAsync(
+      @RequestBody Dish dish)
+  {
+    return restaurateurService.addDish(dish);
+  }
 
-    @GetMapping(value = "/dishes")
-    @Override
-    public List<Dish> getDishListAsync(int restaurantId) {
-        return restaurateurService.getDishList(restaurantId);
-    }
+  @GetMapping(value = "/dishes") @Override public List<Dish> getDishListAsync(
+      int restaurantId)
+  {
+    return restaurateurService.getDishList(restaurantId);
+  }
 
-    @GetMapping(value = "/restaurants/{restaurateurId}")
-    @Override
-    public List<Restaurant> getRestaurantsFromRestaurateurIdAsync(@PathVariable int restaurateurId) {
-        return restaurateurService.getRestaurantsFromRestaurateurId(restaurateurId);
-    }
+  @GetMapping(value = "/restaurants/{restaurateurId}") @Override public List<Restaurant> getRestaurantsFromRestaurateurIdAsync(
+      @PathVariable int restaurateurId)
+  {
+    return restaurateurService.getRestaurantsFromRestaurateurId(restaurateurId);
+  }
 }

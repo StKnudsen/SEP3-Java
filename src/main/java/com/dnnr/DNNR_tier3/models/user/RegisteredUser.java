@@ -5,10 +5,7 @@ public class RegisteredUser extends User
     private String password;
     private int userId;
 
-    public RegisteredUser()
-    {
-
-    }
+    public RegisteredUser() { }
 
     public RegisteredUser(String username, String password)
     {

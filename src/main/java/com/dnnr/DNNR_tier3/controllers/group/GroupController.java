@@ -15,12 +15,14 @@ public class GroupController implements IGroupController
 {
   @Resource IGroupService groupService;
 
-  @PostMapping(value = "/group/recipes") public List<CustomPair> getShuffledRecipesAsync(@RequestBody List<String> allergies)
+  @PostMapping(value = "/group/recipes")
+  @Override public List<CustomPair> getShuffledRecipesAsync(@RequestBody List<String> allergies)
   {
     return groupService.getShuffledRecipes(allergies);
   }
 
-  @GetMapping(value = "/group/restaurants") public List<CustomPair> getShuffledRestaurantsAsync()
+  @GetMapping(value = "/group/restaurants")
+  @Override public List<CustomPair> getShuffledRestaurantsAsync()
   {
     return groupService.getShuffledRestaurants();
   }

@@ -14,7 +14,6 @@ public interface IAdminController
   boolean addFoodGroupAsync(String foodGroupName);
   boolean addRecipeAsync(Recipe recipe);
   boolean addRestaurantAsync(Restaurant restaurant);
-
   Dictionary<Integer, String> getUnitListAsync();
   Dictionary<Integer, String> getRecipeListAsync();
   Dictionary<Integer, String> getUsersAndRestaurateurListAsync();

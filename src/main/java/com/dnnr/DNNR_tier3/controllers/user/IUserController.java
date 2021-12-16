@@ -9,13 +9,12 @@ import java.util.List;
 
 public interface IUserController
 {
-  //    List<User> getAllUsers();
   void setUser(RegisteredUser newRegisteredUser);
   User getUserAsync(String username);
   User getGuestUserAsync(int colourId, int animalId);
+
   ColourAnimalCount getColourAnimalCountAsync();
 
-  //  For allergy registration
   Dictionary<Integer, String> getAllergyFoodGroupList(int userId);
   Dictionary<Integer, String> getAllergyIngredientList(int userId);
   boolean SetUserAllergyFoodGroup(int userId, int foodGroupId);

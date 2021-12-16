@@ -6,12 +6,10 @@ public class Restaurant
     private String name, theme, phoneNumber;
     private Address address;
 
-    public Restaurant()
-    {
-    }
+    public Restaurant() { }
 
-    public Restaurant(int id, int cvr, String name, int ownerId, String theme, Address address,
-            String phoneNumber)
+    public Restaurant(int id, int cvr, String name, int ownerId, String theme,
+        Address address, String phoneNumber)
     {
         this.id = id;
         this.cvr = cvr;

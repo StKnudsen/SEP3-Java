@@ -638,11 +638,8 @@ INSERT INTO users (id, role, username, password)
 VALUES (DEFAULT, 'Restaurateur', 'Lis', '7538ebc37ad0917853e044b9b42bd8a4') /*mad*/;
 
 INSERT INTO restaurant(cvr, name, theme, addressid, phonenumber, ownerid)
-VALUES (15, 'McDonalds', 'FastFood', 3, '+4512345678', 4),
-       (94, 'Noma', 'Nordisk mad', 4, '+4587654321', 4),
-       (86, 'McNuggets', 'Kyllingebidder', 3, '+4570121416', 4);
+VALUES (15, 'McDonalds', 'FastFood', 1, '+4512345678',4),
+       (94, 'Noma', 'Nordisk mad', 2, '+4587654321',4),
+       (86, 'McNuggets', 'Kyllingebidder', 1, '+4570121416', 7);
 
-SELECT *
-FROM users
-WHERE role = 'Restaurateur'
-   OR role = 'User';
+SELECT * FROM users WHERE role = 'Restaurateur' or role = 'User';
