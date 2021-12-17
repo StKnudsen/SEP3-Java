@@ -73,27 +73,30 @@ CREATE TABLE Restaurant
     id          INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     CVR         INT         NOT NULL,
     Name        VARCHAR     NOT NULL,
-    OwnerId     int,
+    OwnerId     INT,
     Theme       VARCHAR,
     AddressId   INT,
     PhoneNumber VARCHAR(11) NOT NULL CHECK ( PhoneNumber LIKE '+45%') UNIQUE,
-    FOREIGN KEY (OwnerId) REFERENCES Users(id),
+    FOREIGN KEY (OwnerId) REFERENCES Users (id),
     FOREIGN KEY (AddressId) REFERENCES Address (id) ON DELETE SET NULL
 );
 
 CREATE TABLE FavoriteRestaurant
 (
-    id           INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    RestaurantId INT UNIQUE NOT NULL
+    UserId       INT,
+    RestaurantId INT,
+    PRIMARY KEY (UserId, RestaurantId),
+    FOREIGN KEY (UserId) REFERENCES Users (id),
+    FOREIGN KEY (RestaurantId) REFERENCES Restaurant (id)
 );
 
 
 CREATE TABLE Dish
 (
-    id   INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    Name VARCHAR NOT NULL,
-    Description VARCHAR,
-    RestaurantId INT NOT NULL,
+    id           INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Name         VARCHAR NOT NULL,
+    Description  VARCHAR,
+    RestaurantId INT     NOT NULL,
     FOREIGN KEY (RestaurantId) REFERENCES Restaurant (id) ON DELETE CASCADE
 );
 
@@ -101,7 +104,6 @@ CREATE TABLE IngredientAllergy
 (
     UserId       INT,
     IngredientId INT,
-    AllergyName  VARCHAR,
     PRIMARY KEY (UserId, IngredientId),
     FOREIGN KEY (UserId) REFERENCES Users (id) ON DELETE CASCADE,
     FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE
@@ -111,7 +113,6 @@ CREATE TABLE IngredientAversion
 (
     UserId         INT,
     IngredientId   INT,
-    PreferenceName VARCHAR,
     PRIMARY KEY (UserId, IngredientId),
     FOREIGN KEY (UserId) REFERENCES Users (id) ON DELETE CASCADE,
     FOREIGN KEY (IngredientId) REFERENCES Ingredient (id) ON DELETE CASCADE

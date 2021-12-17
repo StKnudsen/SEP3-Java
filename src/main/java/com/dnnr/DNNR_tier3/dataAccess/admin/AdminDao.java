@@ -288,8 +288,7 @@ import java.util.List;
             {
                 Restaurant restaurant = new Restaurant(resultSet.getInt("id"),
                         resultSet.getInt("cvr"), resultSet.getString("name"),
-                        resultSet.getInt("ownerid"),
-                        resultSet.getString("theme"),
+                        resultSet.getInt("ownerid"), resultSet.getString("theme"),
                         getAddressById(resultSet.getInt("addressId")),
                         resultSet.getString("phonenumber"));
                 restaurantList.add(restaurant);

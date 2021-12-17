@@ -22,7 +22,6 @@ public class AdminController implements IAdminController
   @Override public boolean addIngredientAsync(
       @RequestBody CustomPair ingredient)
   {
-    System.out.println("It me " + ingredient.getValue());
     int foodgroup = ingredient.getKey();
     String ingredientName = ingredient.getValue();
     return adminService.addIngredient(ingredientName, foodgroup);
@@ -39,7 +38,6 @@ public class AdminController implements IAdminController
       @RequestBody Recipe recipe)
   {
     List<Ingredient> recipeIngredientsList = recipe.getRecipeIngredient();
-    System.out.println("It me opskrift " + recipe.getName() + " med ingrediensnavn " + recipeIngredientsList.get(0).getIngredientName());
     return adminService.addRecipe(recipe);
   }
 
