@@ -19,7 +19,7 @@ public class SharedDNNRDao extends DaoConnection implements ISharedDNNRDao
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM foodgroup");
+          "SELECT * FROM dnnr.foodgroup");
       ResultSet resultSet = statement.executeQuery();
       while (resultSet.next())
       {
@@ -41,7 +41,7 @@ public class SharedDNNRDao extends DaoConnection implements ISharedDNNRDao
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM ingredient");
+          "SELECT * FROM dnnr.ingredient");
       ResultSet resultSet = statement.executeQuery();
       while (resultSet.next())
       {

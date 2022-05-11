@@ -28,7 +28,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM Users WHERE username = '" + username + "'");
+                    "SELECT * FROM dnnr.Users WHERE username = '" + username + "'");
             ResultSet resultSet = statement.executeQuery();
             if (!resultSet.next())
             {
@@ -49,7 +49,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Users(role, username, password) VALUES ('" + registeredUser.getRole() + "', '" + registeredUser.getUsername()
+                    "INSERT INTO dnnr.Users(role, username, password) VALUES ('" + registeredUser.getRole() + "', '" + registeredUser.getUsername()
                             + "', '" + registeredUser.getPassword() + "')");
             return statement.execute();
         }
@@ -65,7 +65,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                "SELECT count(name) FROM animals"
+                "SELECT count(name) FROM dnnr.animals"
             );
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -83,7 +83,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                "SELECT count(name) FROM colours"
+                "SELECT count(name) FROM dnnr.colours"
             );
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -101,7 +101,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                "SELECT name FROM animals WHERE id = " + id
+                "SELECT name FROM dnnr.animals WHERE id = " + id
             );
 
             ResultSet resultSet = statement.executeQuery();
@@ -120,7 +120,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                "SELECT name FROM colours WHERE id = " + id
+                "SELECT name FROM dnnr.colours WHERE id = " + id
             );
 
             ResultSet resultSet = statement.executeQuery();

@@ -21,8 +21,8 @@ public class UserDao extends DaoConnection implements IUserDao
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM foodgroupallergy "
-              + "JOIN foodgroup f on foodgroupallergy.foodgroupid = f.id WHERE userid = "
+          "SELECT * FROM dnnr.foodgroupallergy "
+              + "JOIN dnnr.foodgroup f on foodgroupallergy.foodgroupid = f.id WHERE userid = "
               + userId
       );
       ResultSet result = statement.executeQuery();
@@ -55,8 +55,8 @@ public class UserDao extends DaoConnection implements IUserDao
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM ingredientallergy "
-              + "JOIN ingredient i on ingredientallergy.ingredientid = i.id WHERE userid = "
+          "SELECT * FROM dnnr.ingredientallergy "
+              + "JOIN dnnr.ingredient i on ingredientallergy.ingredientid = i.id WHERE userid = "
               + userId
       );
       ResultSet result = statement.executeQuery();
@@ -78,7 +78,7 @@ public class UserDao extends DaoConnection implements IUserDao
     return null;
   }
 
-  @Override public boolean SetUserAllergyFoodGroup(int userId, int foodGroupId)
+  @Override public boolean setUserAllergyFoodGroup(int userId, int foodGroupId)
   {
     if (userId == 0)
     {
@@ -87,7 +87,7 @@ public class UserDao extends DaoConnection implements IUserDao
      try (Connection connection = getConnection())
      {
         PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO foodgroupallergy (userid, foodgroupid) VALUES (" + userId + ", " + foodGroupId +");"
+          "INSERT INTO dnnr.foodgroupallergy (userid, foodgroupid) VALUES (" + userId + ", " + foodGroupId +");"
         );
 
         return statement.execute();
@@ -100,7 +100,7 @@ public class UserDao extends DaoConnection implements IUserDao
     return false;
   }
 
-  @Override public boolean SetUserAllergyIngredient(int userId, int ingredient)
+  @Override public boolean setUserAllergyIngredient(int userId, int ingredient)
   {
     if (userId == 0)
     {
@@ -109,7 +109,7 @@ public class UserDao extends DaoConnection implements IUserDao
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO ingredientallergy (userid, ingredientid) VALUES (" + userId + ", " + ingredient +");"
+          "INSERT INTO dnnr.ingredientallergy (userid, ingredientid) VALUES (" + userId + ", " + ingredient +");"
       );
 
       return statement.execute();

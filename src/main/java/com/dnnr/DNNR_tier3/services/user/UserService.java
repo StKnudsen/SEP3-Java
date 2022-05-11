@@ -60,11 +60,11 @@ import java.util.Dictionary;
 
   @Override public boolean SetUserAllergyFoodGroup(int userId, int foodGroupId)
   {
-    return userDao.SetUserAllergyFoodGroup(userId, foodGroupId);
+    return userDao.setUserAllergyFoodGroup(userId, foodGroupId);
   }
 
   @Override public boolean SetUserAllergyIngredient(int userId, int ingredient)
   {
-    return userDao.SetUserAllergyIngredient(userId, ingredient);
+    return userDao.setUserAllergyIngredient(userId, ingredient);
   }
 }

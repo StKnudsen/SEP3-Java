@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import java.util.Dictionary;
 
 @RestController
-
 public class SharedDNNRController implements ISharedDNNRController
 {
   @Resource ISharedDNNRService sharedDNNRService;

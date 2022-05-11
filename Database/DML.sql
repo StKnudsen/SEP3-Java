@@ -643,3 +643,4 @@ VALUES (15, 'McDonalds', 'FastFood', 1, '+4512345678',4),
        (86, 'McNuggets', 'Kyllingebidder', 1, '+4570121416', 7);
 
 SELECT * FROM users WHERE role = 'Restaurateur' or role = 'User';
+

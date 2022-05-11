@@ -33,13 +33,13 @@ import java.util.List;
         {
             // Sætter ingrediensen ind
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Ingredient (name) VALUES ('" + ingredientName
+                    "INSERT INTO dnnr.Ingredient (name) VALUES ('" + ingredientName
                             + "')");
             statement.execute();
 
             // Tager id ud fra den indsatte ingrediens
             statement = connection.prepareStatement(
-                    "SELECT id FROM Ingredient WHERE name = '" + ingredientName
+                    "SELECT id FROM dnnr.Ingredient WHERE name = '" + ingredientName
                             + "'");
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -65,7 +65,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO foodgroup(name) VALUES('" + foodGroupName + "')"
+                "INSERT INTO dnnr.foodgroup(name) VALUES('" + foodGroupName + "')"
             );
             statement.execute();
             return true;
@@ -82,7 +82,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO foodgroupingredients(foodgroupid, ingredientid) "
+                    "INSERT INTO dnnr.foodgroupingredients(foodgroupid, ingredientid) "
                             + "VALUES(" + foodGroup + "," + ingredientId + ")");
             return statement.execute();
         }
@@ -99,13 +99,13 @@ import java.util.List;
         {
             //Sætter recipe ind
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO recipe (name) VALUES ('" + recipe.getName()
+                    "INSERT INTO dnnr.recipe (name) VALUES ('" + recipe.getName()
                             + "')");
             statement.execute();
 
             // Tager id ud fra den indsatte recipe
             statement = connection.prepareStatement(
-                    "SELECT id FROM recipe WHERE name = '" + recipe.getName()
+                    "SELECT id FROM dnnr.recipe WHERE name = '" + recipe.getName()
                             + "'");
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -132,7 +132,7 @@ import java.util.List;
             System.out.println("AdminDao i addRestaurant");
             // Sætter adresse ind
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Address(streetname, housenumber, postalcode) VALUES ('"
+                    "INSERT INTO dnnr.Address(streetname, housenumber, postalcode) VALUES ('"
                             + restaurant.getAddress().getStreetName() + "', '"
                             + restaurant.getAddress().getHouseNumber() + "', '"
                             + restaurant.getAddress().getPostalCode()
@@ -141,7 +141,7 @@ import java.util.List;
 
             // Trækker id ud fra den indsatte adresse
             statement = connection.prepareStatement(
-                    "SELECT id FROM address WHERE streetname = '"
+                    "SELECT id FROM dnnr.address WHERE streetname = '"
                             + restaurant.getAddress().getStreetName() + "'");
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -149,7 +149,7 @@ import java.util.List;
 
             // Tilføjer restaurant med addresseId i databasen
             statement = connection.prepareStatement(
-                    "INSERT INTO Restaurant(cvr, name, ownerid, theme, addressid, phonenumber) VALUES ('"
+                    "INSERT INTO dnnr.Restaurant(cvr, name, ownerid, theme, addressid, phonenumber) VALUES ('"
                             + restaurant.getCvr() + "', '"
                             + restaurant.getName() + "', '"
                             + restaurant.getOwnerId() + "', '"
@@ -185,7 +185,7 @@ import java.util.List;
                 int unit = temp.getUnitId();
 
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT id FROM ingredient WHERE name = '"
+                        "SELECT id FROM dnnr.ingredient WHERE name = '"
                                 + ingredientName + "'");
                 ResultSet resultSet = statement.executeQuery();
                 resultSet.next();
@@ -195,7 +195,7 @@ import java.util.List;
                 System.out.println("unit: " + unit);
 
                 statement = connection.prepareStatement(
-                        "INSERT INTO recipeingredients(recipeid, ingredientid, amount, unitid) "
+                        "INSERT INTO dnnr.recipeingredients(recipeid, ingredientid, amount, unitid) "
                                 + "VALUES(" + recipeId + "," + ingredientId
                                 + "," + amount + "," + unit + ")");
                 statement.execute();
@@ -216,7 +216,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM unit");
+                    "SELECT * FROM dnnr.unit");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -238,7 +238,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM recipe");
+                    "SELECT * FROM dnnr.recipe");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -260,7 +260,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM users WHERE role = 'Restaurateur' or role = 'User'");
+                    "SELECT * FROM dnnr.users WHERE role = 'Restaurateur' or role = 'User'");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -282,7 +282,7 @@ import java.util.List;
         {
             List<Restaurant> restaurantList = new LinkedList<>();
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM Restaurant JOIN address a ON a.id = restaurant.addressid");
+                    "SELECT * FROM dnnr.Restaurant JOIN dnnr.address a ON a.id = restaurant.addressid");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -308,8 +308,8 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM address " +
-                            "JOIN city c ON c.postalcode = address.postalcode");
+                    "SELECT * FROM dnnr.address " +
+                            "JOIN dnnr.city c ON c.postalcode = address.postalcode");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
             {
@@ -336,7 +336,7 @@ import java.util.List;
         try (Connection connection = getConnection())
         {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM Address JOIN city c ON c.postalcode = address.postalcode WHERE id = '"
+                    "SELECT * FROM dnnr.Address JOIN dnnr.city c ON c.postalcode = address.postalcode WHERE id = '"
                             + addressId + "'");
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next())

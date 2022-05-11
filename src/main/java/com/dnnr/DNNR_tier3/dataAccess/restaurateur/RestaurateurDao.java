@@ -26,7 +26,7 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
     public boolean addDish(Dish dish) {
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO Dish (Name, Description, RestaurantId) VALUES ('"
+                    "INSERT INTO dnnr.Dish (Name, Description, RestaurantId) VALUES ('"
                             + dish.getName() + "', '"
                             + dish.getDescription() + "', "
                             + dish.getRestaurantId()
@@ -44,8 +44,8 @@ public class RestaurateurDao extends DaoConnection implements IRestaurateurDao {
         List<Dish> dishes = new ArrayList<>();
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM Dish " +
-                            "JOIN restaurant r ON r.id = dish.restaurantid " +
+                    "SELECT * FROM dnnr.Dish " +
+                            "JOIN dnnr.restaurant r ON r.id = dish.restaurantid " +
                             "WHERE restaurantid = '"
                             + restaurantId + "'");
             ResultSet resultSet = statement.executeQuery();

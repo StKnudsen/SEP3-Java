@@ -22,12 +22,12 @@ import java.util.List;
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM recipe WHERE id not in "
-              + "(SELECT id FROM recipe JOIN recipeingredients r on recipe.id = r.recipeid "
+          "SELECT * FROM dnnr.recipe WHERE id not in "
+              + "(SELECT id FROM dnnr.recipe JOIN dnnr.recipeingredients r on dnnr.recipe.id = r.recipeid "
               + "WHERE ingredientid in ("+ ingredients +")) "
-              + "AND id not in (SELECT id FROM recipe "
-              + "JOIN recipeingredients r on recipe.id = r.recipeid "
-              + "JOIN foodgroupingredients f on r.ingredientid = f.ingredientid "
+              + "AND id not in (SELECT id FROM dnnr.recipe "
+              + "JOIN dnnr.recipeingredients r on dnnr.recipe.id = r.recipeid "
+              + "JOIN dnnr.foodgroupingredients f on r.ingredientid = f.ingredientid "
               + "WHERE foodgroupid in("+ foodGroups +")) "
               + "ORDER BY RANDOM(), id, name LIMIT (250)"
           );
@@ -53,8 +53,8 @@ import java.util.List;
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT * FROM Restaurant ORDER BY RANDOM() LIMIT ("
-              + "SELECT COUNT(*) FROM Restaurant" + ")");
+          "SELECT * FROM dnnr.Restaurant ORDER BY RANDOM() LIMIT ("
+              + "SELECT COUNT(*) FROM dnnr.Restaurant" + ")");
       ResultSet resultSet = statement.executeQuery();
 
       while (resultSet.next())
