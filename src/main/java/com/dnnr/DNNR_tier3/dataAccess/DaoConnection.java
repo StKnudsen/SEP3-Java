@@ -11,7 +11,8 @@ public class DaoConnection
     protected Connection getConnection() throws SQLException
     {
         Connection connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres?currentSchema=dnnr",
+                //"jdbc:postgresql://localhost:5432/postgres?currentSchema=dnnr",
+                "jdbc:postgresql://dnnrdb.postgres.database.azure.com:5432/dnnrdb",
                 util.USER, util.PASSWORD
         );
         return connection;

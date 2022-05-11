@@ -303,8 +303,8 @@ VALUES (2, 9),
        (6, 46),
        (6, 47);
 
-INSERT INTO ingredientaversion(userid, ingredientid, preferencename)
-VALUES (1, 18, 'Højt blodtryk');
+INSERT INTO ingredientaversion(userid, ingredientid)
+VALUES (1, 18);
 
 INSERT INTO colours (name)
 VALUES ('Rosa'),

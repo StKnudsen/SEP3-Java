@@ -10,19 +10,6 @@ import java.util.Hashtable;
 @Repository
 public class UserDao extends DaoConnection implements IUserDao
 {
-  /*
-  public UserDao()
-  {
-    try
-    {
-      DriverManager.registerDriver(new org.postgresql.Driver());
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-  }*/
-
   @Override public Dictionary<Integer, String> getAllergyFoodGroupList(int userId)
   {
     if (userId == 0)
